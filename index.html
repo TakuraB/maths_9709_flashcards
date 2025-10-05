@@ -740,22 +740,42 @@
       "front": "Finding Constant Term (Term Independent of x)",
       "back": "Example: Find constant term in \\(\\left(2x - \\frac{1}{x}\\right)^6\\)<br>General term: \\(T_{r+1} = \\binom{6}{r} (2x)^{6-r} \\left(-\\frac{1}{x}\\right)^r\\)<br>\\(= \\binom{6}{r} 2^{6-r} (-1)^r x^{6-2r}\\)<br>For constant term: 6 - 2r = 0 ⇒ r = 3<br>\\(T_4 = \\binom{6}{3} 2^3 (-1)^3 = 20 × 8 × (-1) = -160\\)"
     },
-    {
-      "front": "Arithmetic Progression: nth Term",
-      "back": "\\(u_n = a + (n-1)d\\)<br>where a = first term, d = common difference<br><br>Example: AP: 3, 7, 11, 15, ...<br>a = 3, d = 4<br>10th term = 3 + (10-1)×4 = 3 + 36 = 39"
-    },
-    {
-      "front": "Arithmetic Progression: Sum of n Terms",
-      "back": "\\(S_n = \\frac{n}{2}[2a + (n-1)d]\\)<br>or \\(S_n = \\frac{n}{2}(a + l)\\) where l = last term<br><br>Example: Sum of first 10 terms of 3, 7, 11, ...<br>\\(S_{10} = \\frac{10}{2}[2×3 + (10-1)×4] = 5[6 + 36] = 210\\)"
-    },
-    {
-      "front": "Geometric Progression: nth Term",
-      "back": "\\(u_n = ar^{n-1}\\)<br>where a = first term, r = common ratio<br><br>Example: GP: 2, 6, 18, 54, ...<br>a = 2, r = 3<br>5th term = 2 × 3⁴ = 2 × 81 = 162"
-    },
-    {
-      "front": "Geometric Progression: Sum of n Terms",
-      "back": "\\(S_n = \\frac{a(1-r^n)}{1-r}\\) for r ≠ 1<br>\\(S_n = na\\) for r = 1<br><br>Example: Sum of first 5 terms of 2, 6, 18, ...<br>\\(S_5 = \\frac{2(1-3^5)}{1-3} = \\frac{2(1-243)}{-2} = 242\\)"
-    },
+{
+    "front": "Finding Common Difference (d) in AP",
+    "back": "d = any term − previous term<br><br>Example: AP: 5, 9, 13, 17, ...<br>d = 9 − 5 = 4<br>or d = 13 − 9 = 4<br>or d = 17 − 13 = 4<br><br>For any consecutive terms: d = T₂ − T₁ = T₃ − T₂ = T₄ − T₃ = ..."
+},
+{
+    "front": "Finding Common Ratio (r) in GP",
+    "back": "r = any term ÷ previous term<br><br>Example: GP: 2, 6, 18, 54, ...<br>r = 6 ÷ 2 = 3<br>or r = 18 ÷ 6 = 3<br>or r = 54 ÷ 18 = 3<br><br>For any consecutive terms: r = T₂/T₁ = T₃/T₂ = T₄/T₃ = ..."
+},
+{
+    "front": "Three Consecutive Terms in AP",
+    "back": "For three consecutive terms in AP: T₂ − T₁ = T₃ − T₂<br>This means: 2T₂ = T₁ + T₃<br><br>Example: If 2x, 3x+1, 5x−2 are in AP:<br>2(3x+1) = 2x + (5x−2)<br>6x + 2 = 7x − 2<br>2 + 2 = 7x − 6x<br>4 = x"
+},
+{
+    "front": "Three Consecutive Terms in GP",
+    "back": "For three consecutive terms in GP: T₂/T₁ = T₃/T₂<br>This means: (T₂)² = T₁ × T₃<br><br>Example: If 2, 2k, 8 are in GP:<br>(2k)² = 2 × 8<br>4k² = 16<br>k² = 4<br>k = 2 or k = −2"
+},
+{
+    "front": "Arithmetic Progression: nth Term",
+    "back": "\\(u_n = a + (n-1)d\\)<br>where a = first term, d = common difference<br><br>Example: AP: 3, 7, 11, 15, ...<br>a = 3, d = 4<br>10th term = 3 + (10-1)×4 = 3 + 36 = 39"
+},
+{
+    "front": "Arithmetic Progression: Sum of n Terms",
+    "back": "\\(S_n = \\frac{n}{2}[2a + (n-1)d]\\)<br>or \\(S_n = \\frac{n}{2}(a + l)\\) where l = last term<br><br>Example: Sum of first 10 terms of 3, 7, 11, ...<br>\\(S_{10} = \\frac{10}{2}[2×3 + (10-1)×4] = 5[6 + 36] = 210\\)"
+},
+{
+    "front": "Geometric Progression: nth Term",
+    "back": "\\(u_n = ar^{n-1}\\)<br>where a = first term, r = common ratio<br><br>Example: GP: 2, 6, 18, 54, ...<br>a = 2, r = 3<br>5th term = 2 × 3⁴ = 2 × 81 = 162"
+},
+{
+    "front": "Geometric Progression: Sum of n Terms",
+    "back": "\\(S_n = \\frac{a(1-r^n)}{1-r}\\) for r ≠ 1<br>\\(S_n = na\\) for r = 1<br><br>Example: Sum of first 5 terms of 2, 6, 18, ...<br>\\(S_5 = \\frac{2(1-3^5)}{1-3} = \\frac{2(1-243)}{-2} = 242\\)"
+},
+{
+    "front": "Sum to Infinity of Geometric Series",
+    "back": "\\(S_\\infty = \\frac{a}{1-r}\\)<br>Only valid when |r| < 1<br><br>Example: 1 + ½ + ¼ + ⅛ + ...<br>a = 1, r = ½<br>\\(S_\\infty = \\frac{1}{1-½} = 2\\)"
+},
     {
       "front": "Sum to Infinity of Geometric Series",
       "back": "\\(S_\\infty = \\frac{a}{1-r}\\)<br>Only valid when |r| < 1<br><br>Example: 1 + ½ + ¼ + ⅛ + ...<br>a = 1, r = ½<br>\\(S_\\infty = \\frac{1}{1-½} = 2\\)"
@@ -1220,6 +1240,7 @@
     </script>
 </body>
 </html>
+
 
 
 
