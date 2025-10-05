@@ -327,81 +327,261 @@
     <script>
         // --- Flashcard Data ---
         const flashcardData = [
-            {
-                "topic": "1. Quadratics",
-                "cards": [
-                    {
-                        "front": "What is the quadratic formula?",
-                        "back": "For a quadratic equation in the form $ax^2 + bx + c = 0$, the solutions are given by:<br>$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
-                    },
-                    {
-                        "front": "What is the discriminant and what does it tell us about the roots?",
-                        "back": "The discriminant is $\\Delta = b^2 - 4ac$.<br>• $\\Delta > 0$: Two distinct real roots<br>• $\\Delta = 0$: One repeated real root<br>• $\\Delta < 0$: No real roots"
-                    },
-                    {
-                        "front": "How do you complete the square for $x^2 + bx + c$?",
-                        "back": "$x^2 + bx + c = (x + \\frac{b}{2})^2 - (\\frac{b}{2})^2 + c$"
-                    },
-                    {
-                        "front": "How do you solve quadratic inequalities?",
-                        "back": "1. Find the roots<br>2. Sketch the quadratic<br>3. Identify the regions where the inequality holds"
-                    },
-                    {
-                        "front": "How do you solve simultaneous equations where one is linear and one is quadratic?",
-                        "back": "1. Rearrange the linear equation to make y the subject<br>2. Substitute into the quadratic equation<br>3. Solve the resulting quadratic<br>4. Find the corresponding y-values"
-                    }
-                ]
-            },
-            {
-                "topic": "2. Functions",
-                "cards": [
-                    {
-                        "front": "What is a function?",
-                        "back": "A relation where each input (from the domain) has exactly one output (in the range)."
-                    },
-                    {
-                        "front": "What is the difference between domain and range?",
-                        "back": "Domain: Set of all possible input values<br>Range: Set of all possible output values"
-                    },
-                    {
-                        "front": "What is a composite function?",
-                        "back": "A function made by applying one function to the result of another: $fg(x) = f(g(x))$"
-                    },
-                    {
-                        "front": "What is an inverse function?",
-                        "back": "A function that reverses the effect of the original function. If $f(a) = b$, then $f^{-1}(b) = a$"
-                    },
-                    {
-                        "front": "What is a one-to-one function?",
-                        "back": "A function where each element of the range corresponds to exactly one element of the domain. Only one-to-one functions have inverses."
-                    }
-                ]
-            },
-            {
-                "topic": "3. Coordinate Geometry",
-                "cards": [
-                    {
-                        "front": "What is the equation of a straight line?",
-                        "back": "$y = mx + c$, where m is the gradient and c is the y-intercept"
-                    },
-                    {
-                        "front": "How do you find the gradient between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
-                        "back": "$m = \\frac{y_2 - y_1}{x_2 - x_1}$"
-                    },
-                    {
-                        "front": "What is the equation of a circle with center (a,b) and radius r?",
-                        "back": "$(x - a)^2 + (y - b)^2 = r^2$"
-                    },
-                    {
-                        "front": "How do you find the distance between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
-                        "back": "$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$"
-                    },
-                    {
-                        "front": "How do you find the midpoint between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
-                        "back": "$\\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right)$"
-                    }
-                ]
-            },
+{
+  "topic": "1. Quadratics",
+  "cards": [
+    {
+      "front": "Method 1: Solving by Factorisation",
+      "back": "Express as \\((px + q)(rx + s) = 0\\)<br>Then set each bracket = 0<br><br>Example: \\(x^2 + 5x + 6 = 0\\)<br>\\(\\rightarrow (x + 2)(x + 3) = 0\\)<br>\\(\\rightarrow x = -2\\) or \\(x = -3\\)"
+    },
+    {
+      "front": "Method 2: Solving by Completing the Square",
+      "back": "Write as \\(a(x + p)^2 + q = 0\\)<br>Then solve for x<br><br>Example: \\(x^2 + 6x + 5 = 0\\)<br>\\(\\rightarrow (x + 3)^2 - 9 + 5 = 0\\)<br>\\(\\rightarrow (x + 3)^2 = 4\\)<br>\\(\\rightarrow x = -3 \\pm 2\\)"
+    },
+    {
+      "front": "Method 3: Solving by Quadratic Formula",
+      "back": "\\(x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\\)<br><br>Example: \\(2x^2 + 3x - 5 = 0\\)<br>\\(\\rightarrow x = \\frac{-3 \\pm \\sqrt{9 + 40}}{4}\\)<br>\\(\\rightarrow x = \\frac{-3 \\pm 7}{4}\\)<br>\\(\\rightarrow x = 1\\) or \\(x = -2.5\\)"
+    },
+    {
+      "front": "Discriminant: Definition and Formula",
+      "back": "Discriminant \\(\\Delta = b^2 - 4ac\\)<br>Found inside the square root of quadratic formula<br><br>Example: For \\(3x^2 - 2x + 1 = 0\\)<br>\\(\\Delta = (-2)^2 - 4(3)(1) = 4 - 12 = -8\\)"
+    },
+    {
+      "front": "Discriminant > 0: Nature of Roots",
+      "back": "If \\(\\Delta > 0\\):<br>• Two distinct real roots<br>• Curve crosses x-axis at two points<br><br>Example: \\(x^2 - 5x + 6 = 0\\)<br>\\(\\Delta = 25 - 24 = 1 > 0\\)<br>Two roots: x = 2, x = 3"
+    },
+    {
+      "front": "Discriminant = 0: Nature of Roots",
+      "back": "If \\(\\Delta = 0\\):<br>• One repeated real root<br>• Curve touches x-axis at one point<br>• Also called 'equal roots'<br><br>Example: \\(x^2 - 4x + 4 = 0\\)<br>\\(\\Delta = 16 - 16 = 0\\)<br>One root: x = 2 (repeated)"
+    },
+    {
+      "front": "Discriminant < 0: Nature of Roots",
+      "back": "If \\(\\Delta < 0\\):<br>• No real roots<br>• Curve doesn't cross x-axis<br>• Roots are complex/imaginary<br><br>Example: \\(x^2 + 2x + 5 = 0\\)<br>\\(\\Delta = 4 - 20 = -16 < 0\\)<br>No real roots"
+    },
+    {
+      "front": "Application: Line and Quadratic Curve Intersection",
+      "back": "Solve simultaneously → quadratic equation<br>Use discriminant to find intersection points:<br><br>Example: Line y = x + 1 and curve y = x²<br>\\(x + 1 = x^2 \\rightarrow x^2 - x - 1 = 0\\)<br>\\(\\Delta = 1 + 4 = 5 > 0\\)<br>Two intersection points"
+    },
+    {
+      "front": "Application: Tangent to a Curve",
+      "back": "When \\(\\Delta = 0\\) for line-curve intersection:<br>• Line touches curve at one point<br>• Line is tangent to curve<br><br>Example: Find k if y = 2x + k is tangent to y = x²<br>\\(2x + k = x^2 \\rightarrow x^2 - 2x - k = 0\\)<br>Set \\(\\Delta = 4 + 4k = 0 \\rightarrow k = -1\\)"
+    },
+    {
+      "front": "Application: No Intersection Cases",
+      "back": "When \\(\\Delta < 0\\) for line-curve intersection:<br>• Line doesn't meet curve<br>• Useful for proving curves don't intersect<br><br>Example: Show y = x + 5 doesn't meet y = x² + 1<br>\\(x + 5 = x^2 + 1 \\rightarrow x^2 - x - 4 = 0\\)<br>\\(\\Delta = 1 + 16 = 17 > 0\\) ← Actually does intersect!"
+    },
+    {
+      "front": "Completing Square: Standard Method",
+      "back": "For \\(x^2 + bx + c\\):<br>\\(\\rightarrow (x + \\frac{b}{2})^2 - (\\frac{b}{2})^2 + c\\)<br><br>Example: \\(x^2 + 8x + 10\\)<br>\\(\\rightarrow (x + 4)^2 - 16 + 10\\)<br>\\(\\rightarrow (x + 4)^2 - 6\\)"
+    },
+    {
+      "front": "Completing Square: (ax + b)² Form",
+      "back": "When coefficient of x² ≠ 1:<br>Factor out a, then complete square<br><br>Example: \\(3x^2 + 12x + 5\\)<br>\\(\\rightarrow 3(x^2 + 4x) + 5\\)<br>\\(\\rightarrow 3[(x + 2)^2 - 4] + 5\\)<br>\\(\\rightarrow 3(x + 2)^2 - 7\\)"
+    },
+    {
+      "front": "Completing Square: Coefficient Comparison",
+      "back": "Assume form \\(a(x + p)^2 + q\\)<br>Expand and compare coefficients<br><br>Example: \\(2x^2 + 8x + 3 = a(x + p)^2 + q\\)<br>Expand: \\(ax^2 + 2apx + (ap^2 + q)\\)<br>Compare: a = 2, 2ap = 8 → p = 2, ap² + q = 3 → q = -5<br>Result: \\(2(x + 2)^2 - 5\\)"
+    },
+    {
+      "front": "Quadratic Inequalities: Basic Rules",
+      "back": "After finding roots α and β:<br>• \\((x - α)(x - β) < 0\\) → α < x < β<br>• \\((x - α)(x - β) > 0\\) → x < α or x > β<br><br>Example: \\((x - 1)(x - 4) < 0\\)<br>Solution: 1 < x < 4"
+    },
+    {
+      "front": "Hidden Quadratics: Substitution Method",
+      "back": "For equations like \\(a[f(x)]^2 + b[f(x)] + c = 0\\):<br>Let y = f(x), solve quadratic in y, then solve for x<br><br>Example: \\(x^4 - 5x^2 + 4 = 0\\)<br>Let y = x² → y² - 5y + 4 = 0<br>→ (y - 1)(y - 4) = 0<br>→ x² = 1 or x² = 4<br>→ x = ±1, ±2"
+    },
+    {
+      "front": "Hidden Quadratics: Trigonometric Examples",
+      "back": "Works with trig functions too!<br><br>Example: \\(\\tan^2 x - 3\\tan x + 2 = 0\\)<br>Let y = tan x → y² - 3y + 2 = 0<br>→ (y - 1)(y - 2) = 0<br>→ tan x = 1 or tan x = 2<br>→ x = 45°, 63.4° (plus periods)"
+    },
+    {
+      "front": "Vertex and Line of Symmetry",
+      "back": "For \\(f(x) = a(x - h)^2 + k\\):<br>• Vertex: (h, k)<br>• Line of symmetry: x = h<br>• h = \\(-\\frac{b}{2a}\\)<br><br>Example: \\(f(x) = 2(x - 1)^2 + 3\\)<br>Vertex: (1, 3)<br>Symmetry: x = 1"
+    },
+    {
+      "front": "Maximum vs Minimum Points",
+      "back": "From \\(f(x) = a(x - h)^2 + k\\):<br>• If a > 0: Minimum point at (h, k)<br>• If a < 0: Maximum point at (h, k)<br><br>Example: \\(f(x) = -3(x + 2)^2 + 5\\)<br>a = -3 < 0 → Maximum at (-2, 5)"
+    },
+    {
+      "front": "Simultaneous Equations: Step-by-Step",
+      "back": "1. Rearrange linear equation<br>2. Substitute into quadratic<br>3. Solve resulting quadratic<br>4. Find corresponding values<br><br>Example: y = x + 1 and y = x² - 1<br>x + 1 = x² - 1 → x² - x - 2 = 0<br>→ (x - 2)(x + 1) = 0<br>→ x = 2, y = 3 or x = -1, y = 0"
+    },
+    {
+      "front": "Difference of Two Squares",
+      "back": "\\((ax + b)(ax - b) = a^2x^2 - b^2\\)<br>Useful for factorising and simplifying<br><br>Example: \\(4x^2 - 9 = (2x + 3)(2x - 3)\\)<br>Example: \\(x^4 - 16 = (x^2 + 4)(x^2 - 4)\\)"
+    }
+  ]
+},
+{
+  "topic": "2. Functions",
+  "cards": [
+    {
+      "front": "Function Definition and Properties",
+      "back": "A function maps each x-value to exactly one y-value for a defined set of inputs.<br><br>Properties:<br>• Can be one-one or many-one<br>• Domain = set of input values (x)<br>• Range = set of output values (y)<br><br>Example: \\(f(x) = 2x + 1\\) is a function (one-one)"
+    },
+    {
+      "front": "One-One vs Many-One Functions",
+      "back": "<strong>One-one</strong>: Each x-value gives one unique y-value<br><strong>Many-one</strong>: Different x-values can give same y-value<br><br>Examples:<br>• \\(f(x) = 2x\\) is one-one<br>• \\(f(x) = x^2\\) is many-one (x=2 and x=-2 both give y=4)"
+    },
+    {
+      "front": "Finding Range: Method 1 - Complete the Square",
+      "back": "Complete square to find min/max points:<br><br>Example: \\(f(x) = x^2 - 4x + 3\\)<br>\\(= (x - 2)^2 - 4 + 3\\)<br>\\(= (x - 2)^2 - 1\\)<br>Minimum at (2, -1)<br>Range: \\(f(x) \\geq -1\\)"
+    },
+    {
+      "front": "Finding Range: Method 2 - Differentiation",
+      "back": "Use calculus to find stationary points:<br><br>Example: \\(f(x) = x^2 - 4x + 3\\)<br>\\(f'(x) = 2x - 4 = 0\\)<br>\\(x = 2\\)<br>\\(f(2) = -1\\) (minimum)<br>Range: \\(f(x) \\geq -1\\)"
+    },
+    {
+      "front": "Composite Functions: Definition and Notation",
+      "back": "\\(fg(x) = f(g(x))\\)<br>Function g acts on x first, then f acts on the result<br><br>Example: \\(f(x) = x + 1\\), \\(g(x) = 2x\\)<br>\\(fg(x) = f(g(x)) = f(2x) = 2x + 1\\)"
+    },
+    {
+      "front": "Composite Functions: Existence Condition",
+      "back": "\\(fg\\) only exists if range of g is contained within domain of f<br><br>Example: If \\(g(x) = \\sqrt{x}\\) (range: y ≥ 0)<br>and \\(f(x) = \\ln{x}\\) (domain: x > 0)<br>Then \\(fg\\) exists for x > 0"
+    },
+    {
+      "front": "Composite Functions: Order Matters",
+      "back": "In general, \\(fg(x) \\neq gf(x)\\)<br><br>Example: \\(f(x) = x^2\\), \\(g(x) = x + 1\\)<br>\\(fg(x) = (x + 1)^2\\)<br>\\(gf(x) = x^2 + 1\\)<br>These are different!"
+    },
+    {
+      "front": "Proving One-One Functions",
+      "back": "A function is one-one if:<br>• One x-value gives one y-value<br>• No repeated y-values for different x<br>• Passes horizontal line test<br><br>Example: \\(f(x) = 3x - 2\\) is one-one<br>\\(f(x) = x^2\\) is NOT one-one"
+    },
+    {
+      "front": "Finding Inverse Functions: Step-by-Step",
+      "back": "1. Write \\(y = f(x)\\)<br>2. Interchange x and y variables<br>3. Rearrange to make y the subject<br>4. Write as \\(f^{-1}(x)\\)<br><br>Example: \\(f(x) = 2x + 3\\)<br>1. y = 2x + 3<br>2. x = 2y + 3<br>3. y = (x - 3)/2<br>4. \\(f^{-1}(x) = \\frac{x - 3}{2}\\)"
+    },
+    {
+      "front": "Inverse Functions: Domain and Range Relationship",
+      "back": "• Domain of \\(f^{-1}\\) = Range of f<br>• Range of \\(f^{-1}\\) = Domain of f<br><br>Example: If \\(f(x) = \\sqrt{x}\\)<br>Domain: x ≥ 0, Range: y ≥ 0<br>Then \\(f^{-1}(x) = x^2\\)<br>Domain: x ≥ 0, Range: y ≥ 0"
+    },
+    {
+      "front": "Inverse Functions: Graphical Relationship",
+      "back": "Graphs of f and \\(f^{-1}\\) are reflections in the line \\(y = x\\)<br><br>Example: \\(f(x) = 2x\\) and \\(f^{-1}(x) = \\frac{x}{2}\\)<br>Their graphs are symmetric about y = x"
+    },
+    {
+      "front": "Self-Inverse Functions",
+      "back": "A function where \\(f(x) = f^{-1}(x)\\)<br>Properties:<br>• \\(f(f(x)) = x\\)<br>• Graph is symmetric about \\(y = x\\)<br><br>Example: \\(f(x) = \\frac{1}{x}\\) is self-inverse"
+    },
+    {
+      "front": "Transformations: Vertical Translation",
+      "back": "\\(y = f(x) + a\\)<br>Translation by vector \\(\\begin{pmatrix} 0 \\\\ a \\end{pmatrix}\\)<br><br>Example: \\(y = x^2 + 3\\)<br>Moves \\(y = x^2\\) up 3 units"
+    },
+    {
+      "front": "Transformations: Horizontal Translation",
+      "back": "\\(y = f(x + a)\\)<br>Translation by vector \\(\\begin{pmatrix} -a \\\\ 0 \\end{pmatrix}\\)<br><br>Example: \\(y = (x + 2)^2\\)<br>Moves \\(y = x^2\\) left 2 units"
+    },
+    {
+      "front": "Transformations: Reflection in x-axis",
+      "back": "\\(y = -f(x)\\)<br>Reflection in the x-axis<br><br>Example: \\(y = -x^2\\)<br>Reflects \\(y = x^2\\) in x-axis"
+    },
+    {
+      "front": "Transformations: Reflection in y-axis",
+      "back": "\\(y = f(-x)\\)<br>Reflection in the y-axis<br><br>Example: \\(y = (-x)^2 = x^2\\)<br>Note: \\(x^2\\) is unchanged (even function)"
+    },
+    {
+      "front": "Transformations: Vertical Stretch",
+      "back": "\\(y = af(x)\\)<br>Stretch parallel to y-axis, factor a<br><br>Example: \\(y = 2x^2\\)<br>Stretches \\(y = x^2\\) vertically by factor 2"
+    },
+    {
+      "front": "Transformations: Horizontal Stretch",
+      "back": "\\(y = f(ax)\\)<br>Stretch parallel to x-axis, factor \\(\\frac{1}{a}\\)<br><br>Example: \\(y = (2x)^2 = 4x^2\\)<br>Stretches \\(y = x^2\\) horizontally by factor 1/2"
+    },
+    {
+      "front": "Combining Transformations: Same Direction",
+      "back": "Two vertical OR two horizontal transformations:<br>• Order may affect outcome<br>• Vertical: follow 'normal' order<br>• Horizontal: follow opposite order<br><br>Example: \\(y = 2f(x) + 3\\) vs \\(y = 2[f(x) + 3]\\)"
+    },
+    {
+      "front": "Combining Transformations: Different Directions",
+      "back": "One horizontal AND one vertical transformation:<br>• Order does NOT affect outcome<br><br>Example: \\(y = 2f(x + 3)\\)<br>Same as applying either transformation first"
+    }
+  ]
+},
+{
+  "topic": "3. Coordinate Geometry",
+  "cards": [
+    {
+      "front": "Distance Between Two Points",
+      "back": "Formula: \\(d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\\)<br><br>Example: Points (1, 2) and (4, 6)<br>\\(d = \\sqrt{(4-1)^2 + (6-2)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\)"
+    },
+    {
+      "front": "Midpoint of a Line Segment",
+      "back": "Formula: \\(\\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right)\\)<br><br>Example: Points (2, 3) and (8, 7)<br>Midpoint = \\(\\left(\\frac{2+8}{2}, \\frac{3+7}{2}\\right) = (5, 5)\\)"
+    },
+    {
+      "front": "Gradient (Slope) Between Two Points",
+      "back": "Formula: \\(m = \\frac{y_2 - y_1}{x_2 - x_1}\\)<br><br>Example: Points (1, 1) and (4, 7)<br>\\(m = \\frac{7-1}{4-1} = \\frac{6}{3} = 2\\)"
+    },
+    {
+      "front": "Parallel Lines Property",
+      "back": "Parallel lines have equal gradients<br>\\(m_1 = m_2\\)<br><br>Example: y = 2x + 1 and y = 2x - 3 are parallel (both have m = 2)"
+    },
+    {
+      "front": "Perpendicular Lines Property",
+      "back": "Perpendicular lines have gradients whose product is -1<br>\\(m_1 \\times m_2 = -1\\)<br><br>Example: If m₁ = 2, then m₂ = -½<br>y = 2x + 1 and y = -½x + 3 are perpendicular"
+    },
+    {
+      "front": "Equation of a Line: Point-Gradient Form",
+      "back": "\\(y - y_1 = m(x - x_1)\\)<br>where m is gradient and (x₁, y₁) is a point<br><br>Example: Through (2, 3) with m = 4<br>\\(y - 3 = 4(x - 2)\\)<br>\\(y = 4x - 5\\)"
+    },
+    {
+      "front": "Equation of a Line: Gradient-Intercept Form",
+      "back": "\\(y = mx + c\\)<br>where m is gradient and c is y-intercept<br><br>Example: y = 3x + 2<br>Gradient = 3, y-intercept = 2"
+    },
+    {
+      "front": "Testing for Collinearity",
+      "back": "Points are collinear if they lie on same straight line<br>Test: Check if gradients between consecutive points are equal<br><br>Example: A(1,2), B(2,4), C(3,6)<br>Gradient AB = (4-2)/(2-1) = 2<br>Gradient BC = (6-4)/(3-2) = 2<br>Equal gradients → collinear"
+    },
+    {
+      "front": "Circle Equation: Center-Radius Form",
+      "back": "\\((x - a)^2 + (y - b)^2 = r^2\\)<br>Center = (a, b), Radius = r<br><br>Example: \\((x - 1)^2 + (y + 2)^2 = 9\\)<br>Center = (1, -2), Radius = 3"
+    },
+    {
+      "front": "Circle Equation: General Form",
+      "back": "\\(x^2 + y^2 + 2gx + 2fy + c = 0\\)<br>Center = (-g, -f)<br>Radius = \\(\\sqrt{g^2 + f^2 - c}\\)<br><br>Example: \\(x^2 + y^2 - 4x + 6y - 3 = 0\\)<br>Center = (2, -3), Radius = \\(\\sqrt{4 + 9 + 3} = 4\\)"
+    },
+    {
+      "front": "Converting Between Circle Forms",
+      "back": "Complete the square to convert general form to center-radius form<br><br>Example: \\(x^2 + y^2 - 4x + 6y - 3 = 0\\)<br>\\((x^2 - 4x) + (y^2 + 6y) = 3\\)<br>\\((x - 2)^2 - 4 + (y + 3)^2 - 9 = 3\\)<br>\\((x - 2)^2 + (y + 3)^2 = 16\\)"
+    },
+    {
+      "front": "Angle in a Semicircle Property",
+      "back": "If a triangle is right-angled, its hypotenuse is a diameter of its circumcircle<br><br>Example: If A(0,0), B(4,0), C(2,2) form a right triangle,<br>then the circle through A, B, C has diameter AB"
+    },
+    {
+      "front": "Tangent to a Circle: Radius Property",
+      "back": "A tangent to a circle is perpendicular to the radius at the point of contact<br><br>Example: If radius has gradient m,<br>then tangent has gradient -1/m"
+    },
+    {
+      "front": "Finding Tangent Equation at a Point",
+      "back": "1. Find gradient of radius to point P<br>2. Gradient of tangent = negative reciprocal<br>3. Use point P and gradient to find equation<br><br>Example: Circle \\(x^2 + y^2 = 25\\), point (3,4)<br>Radius gradient = 4/3<br>Tangent gradient = -3/4<br>Equation: y - 4 = -¾(x - 3)"
+    },
+    {
+      "front": "Finding Circle Center from Perpendicular Bisectors",
+      "back": "1. Take any two chords<br>2. Find perpendicular bisector of each chord<br>3. Intersection point = center<br><br>Example: Chords AB and CD<br>Find midpoint and perpendicular bisector of each<br>Intersection gives circle center"
+    },
+    {
+      "front": "Condition for Line to be Tangent to Circle",
+      "back": "Substitute line equation into circle equation<br>If discriminant = 0, line is tangent<br><br>Example: Line y = 2x + c and circle x² + y² = 5<br>Substitute: x² + (2x + c)² = 5<br>If discriminant = 0, line touches circle at one point"
+    },
+    {
+      "front": "Finding Intersection of Line and Circle",
+      "back": "Substitute line equation into circle equation<br>Solve resulting quadratic<br>Discriminant tells number of intersection points<br><br>Example: Line y = x + 1 and circle x² + y² = 25<br>x² + (x + 1)² = 25 → 2x² + 2x - 24 = 0<br>x² + x - 12 = 0 → (x + 4)(x - 3) = 0<br>Two intersection points"
+    },
+    {
+      "front": "Equation of a Vertical Line",
+      "back": "x = constant<br>Gradient is undefined<br><br>Example: x = 3 is a vertical line through (3,0)"
+    },
+    {
+      "front": "Equation of a Horizontal Line",
+      "back": "y = constant<br>Gradient = 0<br><br>Example: y = -2 is a horizontal line through (0,-2)"
+    },
+    {
+      "front": "Finding Perpendicular Bisector",
+      "back": "1. Find midpoint of line segment<br>2. Find gradient of line segment<br>3. Gradient of perpendicular = negative reciprocal<br>4. Use midpoint and perpendicular gradient<br><br>Example: Points A(1,2), B(5,8)<br>Midpoint = (3,5), Gradient AB = 1.5<br>Perpendicular gradient = -⅔<br>Equation: y - 5 = -⅔(x - 3)"
+    }
+  ]
+},
             {
                 "topic": "4. Circular Measure (Radians)",
                 "cards": [
@@ -427,131 +607,330 @@
                     }
                 ]
             },
-            {
-                "topic": "5. Trigonometry",
-                "cards": [
-                    {
-                        "front": "What is SOHCAHTOA?",
-                        "back": "SOH: $\\sin\\theta = \\frac{opposite}{hypotenuse}$<br>CAH: $\\cos\\theta = \\frac{adjacent}{hypotenuse}$<br>TOA: $\\tan\\theta = \\frac{opposite}{adjacent}$"
-                    },
-                    {
-                        "front": "What are the Pythagorean identities?",
-                        "back": "$\\sin^2\\theta + \\cos^2\\theta = 1$<br>$1 + \\tan^2\\theta = \\sec^2\\theta$<br>$1 + \\cot^2\\theta = \\csc^2\\theta$"
-                    },
-                    {
-                        "front": "What is the sine rule?",
-                        "back": "$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$"
-                    },
-                    {
-                        "front": "What is the cosine rule?",
-                        "back": "$a^2 = b^2 + c^2 - 2bc\\cos A$<br>or $\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}$"
-                    },
-                    {
-                        "front": "What is the area of a triangle formula using trigonometry?",
-                        "back": "$Area = \\frac{1}{2}ab\\sin C$"
-                    }
-                ]
-            },
-            {
-                "topic": "6. Series",
-                "cards": [
-                    {
-                        "front": "What is the binomial expansion formula?",
-                        "back": "$(a + b)^n = \\sum_{r=0}^{n} \\binom{n}{r} a^{n-r} b^r$<br>where $\\binom{n}{r} = \\frac{n!}{r!(n-r)!}$"
-                    },
-                    {
-                        "front": "What is an arithmetic progression?",
-                        "back": "A sequence where the difference between consecutive terms is constant.<br>nth term: $u_n = a + (n-1)d$<br>Sum of first n terms: $S_n = \\frac{n}{2}(2a + (n-1)d)$"
-                    },
-                    {
-                        "front": "What is a geometric progression?",
-                        "back": "A sequence where each term is found by multiplying the previous term by a constant.<br>nth term: $u_n = ar^{n-1}$<br>Sum of first n terms: $S_n = \\frac{a(1-r^n)}{1-r}$ (for r ≠ 1)"
-                    },
-                    {
-                        "front": "What is the sum to infinity of a geometric series?",
-                        "back": "$S_\\infty = \\frac{a}{1-r}$, but only if |r| < 1"
-                    },
-                    {
-                        "front": "What is sigma notation?",
-                        "back": "$\\sum_{r=1}^{n} f(r)$ means the sum of f(r) from r=1 to r=n"
-                    }
-                ]
-            },
-            {
-                "topic": "7. Differentiation",
-                "cards": [
-                    {
-                        "front": "What is the derivative of $x^n$?",
-                        "back": "$\\frac{d}{dx}(x^n) = nx^{n-1}$"
-                    },
-                    {
-                        "front": "What is the chain rule?",
-                        "back": "If y = f(u) and u = g(x), then $\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$"
-                    },
-                    {
-                        "front": "What is the product rule?",
-                        "back": "If y = uv, then $\\frac{dy}{dx} = u\\frac{dv}{dx} + v\\frac{du}{dx}$"
-                    },
-                    {
-                        "front": "What is the quotient rule?",
-                        "back": "If y = $\\frac{u}{v}$, then $\\frac{dy}{dx} = \\frac{v\\frac{du}{dx} - u\\frac{dv}{dx}}{v^2}$"
-                    },
-                    {
-                        "front": "How do you find stationary points?",
-                        "back": "1. Find $\\frac{dy}{dx}$<br>2. Set $\\frac{dy}{dx} = 0$ and solve for x<br>3. Use the second derivative test to determine nature:<br>• $\\frac{d^2y}{dx^2} > 0$: Minimum<br>• $\\frac{d^2y}{dx^2} < 0$: Maximum<br>• $\\frac{d^2y}{dx^2} = 0$: Point of inflection"
-                    }
-                ]
-            },
-            {
-                "topic": "8. Integration",
-                "cards": [
-                    {
-                        "front": "What is the integral of $x^n$?",
-                        "back": "$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$, for n ≠ -1"
-                    },
-                    {
-                        "front": "What is the fundamental theorem of calculus?",
-                        "back": "If F'(x) = f(x), then $\\int_a^b f(x) dx = F(b) - F(a)$"
-                    },
-                    {
-                        "front": "How do you find the area under a curve?",
-                        "back": "Area = $\\int_a^b f(x) dx$"
-                    },
-                    {
-                        "front": "How do you find the area between two curves?",
-                        "back": "Area = $\\int_a^b [f(x) - g(x)] dx$, where f(x) is the upper curve"
-                    },
-                    {
-                        "front": "What is integration by substitution?",
-                        "back": "A method to simplify integrals by substituting a new variable: $\\int f(g(x))g'(x) dx = \\int f(u) du$ where u = g(x)"
-                    }
-                ]
-            },
-            {
-                "topic": "9. Inequalities & Simultaneous Equations",
-                "cards": [
-                    {
-                        "front": "How do you solve linear inequalities?",
-                        "back": "Solve like equations, but reverse the inequality sign when multiplying or dividing by a negative number."
-                    },
-                    {
-                        "front": "How do you solve quadratic inequalities?",
-                        "back": "1. Find the roots<br>2. Sketch the graph<br>3. Identify the regions where the inequality holds"
-                    },
-                    {
-                        "front": "How do you solve simultaneous linear equations?",
-                        "back": "Use elimination or substitution method"
-                    },
-                    {
-                        "front": "How do you solve simultaneous equations where one is linear and one is quadratic?",
-                        "back": "Substitute the linear equation into the quadratic equation"
-                    },
-                    {
-                        "front": "How do you represent inequalities on graphs?",
-                        "back": "Use solid lines for ≤ or ≥, dashed lines for < or >, and shade the region that satisfies the inequality"
-                    }
-                ]
-            }
+{
+  "topic": "5. Trigonometry",
+  "cards": [
+    {
+      "front": "SOH CAH TOA - Right Triangle Definitions",
+      "back": "SOH: Sin = Opposite/Hypotenuse<br>CAH: Cos = Adjacent/Hypotenuse<br>TOA: Tan = Opposite/Adjacent<br><br>Example: Triangle with opposite=3, adjacent=4, hypotenuse=5<br>sinθ = 3/5, cosθ = 4/5, tanθ = 3/4"
+    },
+    {
+      "front": "Sine Rule Formula",
+      "back": "\\(\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R\\)<br>Where R is circumradius<br><br>Use when you know:<br>• Two angles and one side, or<br>• Two sides and non-included angle"
+    },
+    {
+      "front": "Sine Rule Example",
+      "back": "Given: A=30°, B=45°, side a=8 cm<br>Find side b:<br>\\(\\frac{8}{\\sin 30°} = \\frac{b}{\\sin 45°}\\)<br>\\(\\frac{8}{0.5} = \\frac{b}{0.7071}\\)<br>16 = b/0.7071<br>b = 16 × 0.7071 ≈ 11.31 cm"
+    },
+    {
+      "front": "Cosine Rule Formula (Finding Sides)",
+      "back": "\\(a^2 = b^2 + c^2 - 2bc\\cos A\\)<br>\\(b^2 = a^2 + c^2 - 2ac\\cos B\\)<br>\\(c^2 = a^2 + b^2 - 2ab\\cos C\\)<br><br>Use when you know:<br>• Two sides and included angle, or<br>• Three sides"
+    },
+    {
+      "front": "Cosine Rule Example (Finding Side)",
+      "back": "Given: b=5 cm, c=7 cm, A=60°<br>Find side a:<br>\\(a^2 = 5^2 + 7^2 - 2×5×7×\\cos 60°\\)<br>\\(a^2 = 25 + 49 - 70×0.5\\)<br>\\(a^2 = 74 - 35 = 39\\)<br>a = √39 ≈ 6.24 cm"
+    },
+    {
+      "front": "Cosine Rule Formula (Finding Angles)",
+      "back": "\\(\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}\\)<br>\\(\\cos B = \\frac{a^2 + c^2 - b^2}{2ac}\\)<br>\\(\\cos C = \\frac{a^2 + b^2 - c^2}{2ab}\\)<br><br>Use when you know all three sides"
+    },
+    {
+      "front": "Cosine Rule Example (Finding Angle)",
+      "back": "Given: a=3, b=4, c=5<br>Find angle C:<br>\\(\\cos C = \\frac{3^2 + 4^2 - 5^2}{2×3×4}\\)<br>\\(\\cos C = \\frac{9 + 16 - 25}{24} = \\frac{0}{24} = 0\\)<br>C = cos⁻¹(0) = 90°"
+    },
+    {
+      "front": "Area of Triangle (Basic Formula)",
+      "back": "\\(A = \\frac{1}{2} × \\text{base} × \\text{height}\\)<br><br>Example: base=6 cm, height=4 cm<br>A = ½ × 6 × 4 = 12 cm²"
+    },
+    {
+      "front": "Area of Triangle (Using Two Sides and Included Angle)",
+      "back": "\\(A = \\frac{1}{2}ab\\sin C\\)<br>\\(A = \\frac{1}{2}bc\\sin A\\)<br>\\(A = \\frac{1}{2}ac\\sin B\\)<br><br>Example: a=5, b=6, C=30°<br>A = ½ × 5 × 6 × sin30° = 15 × 0.5 = 7.5"
+    },
+    {
+      "front": "Area of Triangle (Heron's Formula)",
+      "back": "When you know all three sides:<br>\\(s = \\frac{a + b + c}{2}\\) (semi-perimeter)<br>\\(A = \\sqrt{s(s-a)(s-b)(s-c)}\\)<br><br>Example: a=3, b=4, c=5<br>s = (3+4+5)/2 = 6<br>A = √[6×3×2×1] = √36 = 6"
+    },
+    {
+      "front": "Pythagorean Theorem",
+      "back": "For right triangles only:<br>\\(a^2 + b^2 = c^2\\)<br>Where c is hypotenuse<br><br>Example: a=3, b=4<br>c² = 3² + 4² = 9 + 16 = 25<br>c = 5"
+    },
+    {
+      "front": "Trigonometric Identities (Basic)",
+      "back": "\\(\\tan θ = \\frac{\\sin θ}{\\cos θ}\\)<br>\\(\\sin^2 θ + \\cos^2 θ = 1\\)<br>\\(1 + \\tan^2 θ = \\sec^2 θ\\)<br>\\(1 + \\cot^2 θ = \\cosec^2 θ\\)"
+    },
+    {
+      "front": "When to Use Sine Rule vs Cosine Rule",
+      "back": "<strong>Use Sine Rule when:</strong><br>• Two angles + one side (AAS)<br>• Two sides + non-included angle (SSA)<br><br><strong>Use Cosine Rule when:</strong><br>• Two sides + included angle (SAS)<br>• Three sides (SSS)"
+    },
+    {
+      "front": "Ambiguous Case of Sine Rule",
+      "back": "Occurs with SSA case (two sides + non-included angle)<br>Possible outcomes:<br>• No triangle<br>• One triangle<br>• Two triangles<br><br>Check if: side > height = b sinA"
+    },
+    {
+      "front": "Finding Missing Angle Using Triangle Sum",
+      "back": "Sum of angles in any triangle = 180°<br>A + B + C = 180°<br><br>Example: If A=50°, B=60°<br>Then C = 180 - 50 - 60 = 70°"
+    },
+    {
+      "front": "Exact Values: 0°, 30°, 45°, 60°, 90°",
+      "back": "0°: sin=0, cos=1, tan=0<br>30°: sin=½, cos=√3/2, tan=1/√3<br>45°: sin=√2/2, cos=√2/2, tan=1<br>60°: sin=√3/2, cos=½, tan=√3<br>90°: sin=1, cos=0, tan=∞"
+    },
+    {
+      "front": "Solving Right Triangles",
+      "back": "Steps:<br>1. Identify known sides/angles<br>2. Use SOH CAH TOA for missing sides<br>3. Use 180° sum for missing angles<br><br>Example: Right triangle, hypotenuse=10, angle=30°<br>Opposite = 10×sin30° = 5<br>Adjacent = 10×cos30° = 8.66"
+    },
+    {
+      "front": "Application: Height of Tree/Building",
+      "back": "Use tangent ratio:<br>\\(\\tan θ = \\frac{\\text{height}}{\\text{distance}}\\)<br><br>Example: 50m from tree, angle=40°<br>height = 50 × tan40° ≈ 50 × 0.8391 = 41.95m"
+    },
+    {
+      "front": "Application: Distance Across River",
+      "back": "Use sine or cosine rule in non-right triangles<br><br>Example: Points A and B on same side, point C on opposite side<br>Measure angles at A and B, distance AB<br>Use sine rule to find AC or BC"
+    },
+    {
+      "front": "Checking Triangle Validity",
+      "back": "A triangle is valid if:<br>• Sum of any two sides > third side<br>• All angles > 0° and < 180°<br>• Sum of angles = 180°<br><br>Example: sides 2,3,6 → 2+3=5 which is not >6 → invalid"
+    }
+  ]
+},
+{
+  "topic": "6. Series",
+  "cards": [
+    {
+      "front": "Binomial Expansion Formula",
+      "back": "\\((a + b)^n = \\sum_{r=0}^{n} \\binom{n}{r} a^{n-r} b^r\\)<br>where \\(\\binom{n}{r} = \\frac{n!}{r!(n-r)!}\\)<br><br>Example: \\((1 + x)^3 = 1 + 3x + 3x^2 + x^3\\)"
+    },
+    {
+      "front": "General Term in Binomial Expansion",
+      "back": "For \\((a + b)^n\\), the (r+1)th term is:<br>\\(T_{r+1} = \\binom{n}{r} a^{n-r} b^r\\)<br><br>Example: In \\((1 + x)^5\\), 3rd term (r=2):<br>\\(T_3 = \\binom{5}{2} (1)^{3} (x)^2 = 10x^2\\)"
+    },
+    {
+      "front": "Finding Specific Coefficient: Simple Case",
+      "back": "Example: Find coefficient of x³ in \\((2 + 3x)^5\\)<br>General term: \\(T_{r+1} = \\binom{5}{r} (2)^{5-r} (3x)^r\\)<br>We need r=3:<br>\\(T_4 = \\binom{5}{3} (2)^2 (3x)^3 = 10 × 4 × 27x^3\\)<br>Coefficient = 10 × 4 × 27 = 1080"
+    },
+    {
+      "front": "Finding Specific Coefficient: x in Both Terms",
+      "back": "Example: Find coefficient of x⁴ in \\((1 + 2x)(3 - x)^6\\)<br>First, expand \\((3 - x)^6\\):<br>\\(T_{r+1} = \\binom{6}{r} (3)^{6-r} (-x)^r\\)<br>We need terms that give x⁴ when multiplied:<br>From (1 + 2x):<br>• 1 × (x⁴ term from expansion)<br>• 2x × (x³ term from expansion)"
+    },
+    {
+      "front": "Coefficient with x in Both Terms - Calculation",
+      "back": "Continuing from previous:<br>x⁴ term from expansion: r=4<br>\\(\\binom{6}{4} (3)^2 (-x)^4 = 15 × 9 × x^4 = 135x^4\\)<br><br>x³ term from expansion: r=3<br>\\(\\binom{6}{3} (3)^3 (-x)^3 = 20 × 27 × (-x^3) = -540x^3\\)<br><br>Total coefficient = 1×135 + 2×(-540) = 135 - 1080 = -945"
+    },
+    {
+      "front": "Binomial with Negative/ Fractional Power",
+      "back": "\\((1 + x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\cdots\\)<br>Valid for |x| < 1, n any real number<br><br>Example: \\((1 + x)^{-2} = 1 - 2x + 3x^2 - 4x^3 + \\cdots\\)"
+    },
+    {
+      "front": "Finding Constant Term (Term Independent of x)",
+      "back": "Example: Find constant term in \\(\\left(2x - \\frac{1}{x}\\right)^6\\)<br>General term: \\(T_{r+1} = \\binom{6}{r} (2x)^{6-r} \\left(-\\frac{1}{x}\\right)^r\\)<br>\\(= \\binom{6}{r} 2^{6-r} (-1)^r x^{6-2r}\\)<br>For constant term: 6 - 2r = 0 ⇒ r = 3<br>\\(T_4 = \\binom{6}{3} 2^3 (-1)^3 = 20 × 8 × (-1) = -160\\)"
+    },
+    {
+      "front": "Binomial Multiplied by Another Binomial",
+      "back": "Example: Find x² coefficient in \\((1 + 2x)(1 - x)^5\\)<br>Expand \\((1 - x)^5 = 1 - 5x + 10x^2 - 10x^3 + \\cdots\\)<br>Multiply:<br>(1 + 2x)(1 - 5x + 10x² - ⋯)<br>x² terms: 1×10x² + 2x×(-5x) = 10x² - 10x² = 0<br>Coefficient = 0"
+    },
+    {
+      "front": "Arithmetic Progression: nth Term",
+      "back": "\\(u_n = a + (n-1)d\\)<br>where a = first term, d = common difference<br><br>Example: AP: 3, 7, 11, 15, ...<br>a = 3, d = 4<br>10th term = 3 + (10-1)×4 = 3 + 36 = 39"
+    },
+    {
+      "front": "Arithmetic Progression: Sum of n Terms",
+      "back": "\\(S_n = \\frac{n}{2}[2a + (n-1)d]\\)<br>or \\(S_n = \\frac{n}{2}(a + l)\\) where l = last term<br><br>Example: Sum of first 10 terms of 3, 7, 11, ...<br>\\(S_{10} = \\frac{10}{2}[2×3 + (10-1)×4] = 5[6 + 36] = 210\\)"
+    },
+    {
+      "front": "Geometric Progression: nth Term",
+      "back": "\\(u_n = ar^{n-1}\\)<br>where a = first term, r = common ratio<br><br>Example: GP: 2, 6, 18, 54, ...<br>a = 2, r = 3<br>5th term = 2 × 3⁴ = 2 × 81 = 162"
+    },
+    {
+      "front": "Geometric Progression: Sum of n Terms",
+      "back": "\\(S_n = \\frac{a(1-r^n)}{1-r}\\) for r ≠ 1<br>\\(S_n = na\\) for r = 1<br><br>Example: Sum of first 5 terms of 2, 6, 18, ...<br>\\(S_5 = \\frac{2(1-3^5)}{1-3} = \\frac{2(1-243)}{-2} = 242\\)"
+    },
+    {
+      "front": "Sum to Infinity of Geometric Series",
+      "back": "\\(S_\\infty = \\frac{a}{1-r}\\)<br>Only valid when |r| < 1<br><br>Example: 1 + ½ + ¼ + ⅛ + ...<br>a = 1, r = ½<br>\\(S_\\infty = \\frac{1}{1-½} = 2\\)"
+    },
+    {
+      "front": "Sigma Notation Basics",
+      "back": "\\(\\sum_{r=1}^{n} f(r)\\) means sum f(r) from r=1 to r=n<br><br>Example: \\(\\sum_{r=1}^{4} (2r + 1) = 3 + 5 + 7 + 9 = 24\\)"
+    },
+    {
+      "front": "Binomial with Two Variables in Single Term",
+      "back": "Example: Find coefficient of x³y² in \\((2x + 3y)^5\\)<br>General term: \\(T_{r+1} = \\binom{5}{r} (2x)^{5-r} (3y)^r\\)<br>We need: power of x = 3 ⇒ 5 - r = 3 ⇒ r = 2<br>\\(T_3 = \\binom{5}{2} (2x)^3 (3y)^2 = 10 × 8x^3 × 9y^2\\)<br>Coefficient = 10 × 8 × 9 = 720"
+    },
+    {
+      "front": "Using Binomial Theorem for Approximation",
+      "back": "Example: Approximate (1.01)¹⁰ using binomial expansion<br>\\((1 + 0.01)^{10} = 1 + 10(0.01) + 45(0.01)^2 + \\cdots\\)<br>= 1 + 0.1 + 0.0045 + ⋯ ≈ 1.1045<br>Actual: 1.1046"
+    },
+    {
+      "front": "Finding Specific Term in Complex Expression",
+      "back": "Example: Find x⁵ term in \\((1 + x)^3(2 - x)^4\\)<br>Strategy: List all combinations from both expansions that give x⁵:<br>From (1+x)³: x⁰, x¹, x², x³<br>From (2-x)⁴: x⁵, x⁴, x³, x²<br>Possible pairs: (x⁰,x⁵), (x¹,x⁴), (x²,x³), (x³,x²)<br>Calculate each and sum coefficients"
+    },
+    {
+      "front": "Arithmetic Mean and Geometric Mean",
+      "back": "For two numbers a and b:<br>Arithmetic Mean = \\(\\frac{a+b}{2}\\)<br>Geometric Mean = \\(\\sqrt{ab}\\)<br><br>For three numbers a, b, c:<br>AM = \\(\\frac{a+b+c}{3}\\), GM = \\(\\sqrt[3]{abc}\\)"
+    },
+    {
+      "front": "Sum of First n Natural Numbers",
+      "back": "\\(1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\\)<br><br>Example: Sum of first 100 numbers = \\(\\frac{100×101}{2} = 5050\\)"
+    },
+    {
+      "front": "Sum of Squares and Cubes",
+      "back": "Sum of squares: \\(1^2 + 2^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\\)<br>Sum of cubes: \\(1^3 + 2^3 + \\cdots + n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2\\)<br><br>Example: 1² + 2² + 3² = \\(\\frac{3×4×7}{6} = 14\\)"
+    }
+  ]
+},
+{
+  "topic": "7. Differentiation",
+  "cards": [
+    {
+      "front": "Power Rule for Differentiation",
+      "back": "\\(\\frac{d}{dx}(x^n) = nx^{n-1}\\)<br>Works for all real n (positive, negative, fractional)<br><br>Examples:<br>\\(\\frac{d}{dx}(x^3) = 3x^2\\)<br>\\(\\frac{d}{dx}(\\sqrt{x}) = \\frac{d}{dx}(x^{1/2}) = \\frac{1}{2}x^{-1/2}\\)<br>\\(\\frac{d}{dx}(\\frac{1}{x}) = \\frac{d}{dx}(x^{-1}) = -x^{-2}\\)"
+    },
+    {
+      "front": "Chain Rule: General Formula",
+      "back": "If y = f(u) and u = g(x), then:<br>\\(\\frac{dy}{dx} = \\frac{dy}{du} \\times \\frac{du}{dx}\\)<br><br>Example: y = (3x² + 1)⁴<br>Let u = 3x² + 1, y = u⁴<br>\\(\\frac{dy}{du} = 4u^3\\), \\(\\frac{du}{dx} = 6x\\)<br>\\(\\frac{dy}{dx} = 4u^3 × 6x = 24x(3x² + 1)^3\\)"
+    },
+    {
+      "front": "Chain Rule: Special Case (ax + b)ⁿ",
+      "back": "\\(\\frac{d}{dx}[(ax + b)^n] = an(ax + b)^{n-1}\\)<br><br>Examples:<br>\\(\\frac{d}{dx}[(2x + 3)^5] = 5×2×(2x+3)^4 = 10(2x+3)^4\\)<br>\\(\\frac{d}{dx}[(1 - 4x)^{-2}] = -2×(-4)×(1-4x)^{-3} = 8(1-4x)^{-3}\\)"
+    },
+    {
+      "front": "Differentiating Square Roots and Fractions",
+      "back": "Use chain rule with fractional/negative powers:<br><br>Examples:<br>\\(\\frac{d}{dx}(\\sqrt{3x+1}) = \\frac{d}{dx}[(3x+1)^{1/2}] = \\frac{1}{2}×3×(3x+1)^{-1/2} = \\frac{3}{2\\sqrt{3x+1}}\\)<br>\\(\\frac{d}{dx}(\\frac{1}{2x-5}) = \\frac{d}{dx}[(2x-5)^{-1}] = -1×2×(2x-5)^{-2} = \\frac{-2}{(2x-5)^2}\\)"
+    },
+    {
+      "front": "Finding Gradient at a Point",
+      "back": "1. Differentiate to find gradient function<br>2. Substitute x-coordinate<br><br>Example: Find gradient of y = x³ - 2x at x = 2<br>\\(\\frac{dy}{dx} = 3x^2 - 2\\)<br>At x = 2: gradient = 3(4) - 2 = 10"
+    },
+    {
+      "front": "Equation of a Tangent Line",
+      "back": "At point (a, f(a)):<br>1. Find gradient m = f'(a)<br>2. Use point-slope form: y - f(a) = m(x - a)<br><br>Example: Tangent to y = x² at (2,4)<br>m = 2x = 4<br>Equation: y - 4 = 4(x - 2) ⇒ y = 4x - 4"
+    },
+    {
+      "front": "Equation of a Normal Line",
+      "back": "At point (a, f(a)):<br>1. Find gradient of tangent m = f'(a)<br>2. Gradient of normal = -1/m<br>3. Use point-slope form<br><br>Example: Normal to y = x² at (2,4)<br>m_tangent = 4<br>m_normal = -¼<br>Equation: y - 4 = -¼(x - 2) ⇒ y = -¼x + 4.5"
+    },
+    {
+      "front": "Finding Stationary Points",
+      "back": "Points where gradient = 0:<br>1. Find \\(\\frac{dy}{dx}\\)<br>2. Solve \\(\\frac{dy}{dx} = 0\\)<br>3. Find y-coordinates<br><br>Example: y = x³ - 3x<br>\\(\\frac{dy}{dx} = 3x^2 - 3 = 0\\)<br>x² = 1 ⇒ x = ±1<br>Points: (1,-2) and (-1,2)"
+    },
+    {
+      "front": "Second Derivative Test",
+      "back": "At stationary point:<br>• If \\(\\frac{d^2y}{dx^2} > 0\\): Minimum point<br>• If \\(\\frac{d^2y}{dx^2} < 0\\): Maximum point<br>• If \\(\\frac{d^2y}{dx^2} = 0\\): Test fails (use first derivative test)<br><br>Example: y = x³ - 3x<br>\\(\\frac{d^2y}{dx^2} = 6x\\)<br>At (1,-2): 6 > 0 → Minimum<br>At (-1,2): -6 < 0 → Maximum"
+    },
+    {
+      "front": "First Derivative Sign Test",
+      "back": "Check sign of \\(\\frac{dy}{dx}\\) around stationary point:<br>• (-) to (+): Minimum<br>• (+) to (-): Maximum<br>• No change: Point of inflection<br><br>Example: y = x³<br>\\(\\frac{dy}{dx} = 3x^2 = 0\\) at x=0<br>Left of 0: positive, Right of 0: positive<br>No change → Point of inflection"
+    },
+    {
+      "front": "Increasing and Decreasing Functions",
+      "back": "• Increasing: \\(\\frac{dy}{dx} > 0\\)<br>• Decreasing: \\(\\frac{dy}{dx} < 0\\)<br>• Stationary: \\(\\frac{dy}{dx} = 0\\)<br><br>Example: y = x²<br>\\(\\frac{dy}{dx} = 2x\\)<br>Increasing for x > 0, Decreasing for x < 0"
+    },
+    {
+      "front": "Rates of Change: Basic Concept",
+      "back": "\\(\\frac{dy}{dx}\\) represents rate of change of y with respect to x<br><br>Examples:<br>• Distance with respect to time: velocity<br>• Volume with respect to radius: rate of expansion<br>• Cost with respect to items: marginal cost"
+    },
+    {
+      "front": "Connected Rates of Change",
+      "back": "Use chain rule: \\(\\frac{dy}{dt} = \\frac{dy}{dx} \\times \\frac{dx}{dt}\\)<br><br>Example: Radius increasing at 2 cm/s, find rate of volume increase when r=5<br>\\(V = \\frac{4}{3}\\pi r^3\\)<br>\\(\\frac{dV}{dr} = 4\\pi r^2\\)<br>\\(\\frac{dV}{dt} = \\frac{dV}{dr} \\times \\frac{dr}{dt} = 4\\pi r^2 × 2\\)<br>At r=5: \\(\\frac{dV}{dt} = 4\\pi × 25 × 2 = 200\\pi\\) cm³/s"
+    },
+    {
+      "front": "Practical Rates of Change: Ladder Problem",
+      "back": "Example: 5m ladder slides down wall at 0.5 m/s<br>Find rate bottom moves away when top is 3m high<br>x² + y² = 25<br>Differentiate: \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0\\)<br>When y=3, x=4, \\(\\frac{dy}{dt} = -0.5\\)<br>\\(2(4)\\frac{dx}{dt} + 2(3)(-0.5) = 0\\)<br>\\(8\\frac{dx}{dt} = 3\\) ⇒ \\(\\frac{dx}{dt} = 0.375\\) m/s"
+    },
+    {
+      "front": "Practical Rates of Change: Volume Problems",
+      "back": "Example: Sphere volume increases at 10 cm³/s<br>Find radius increase rate when r=2 cm<br>\\(V = \\frac{4}{3}\\pi r^3\\)<br>\\(\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt}\\)<br>\\(10 = 4\\pi (4) \\frac{dr}{dt}\\)<br>\\(\\frac{dr}{dt} = \\frac{10}{16\\pi} = \\frac{5}{8\\pi}\\) cm/s"
+    },
+    {
+      "front": "Sketching Gradient Functions",
+      "back": "Key relationships:<br>• Where f(x) has max/min, f'(x) crosses x-axis<br>• Where f(x) increasing, f'(x) positive<br>• Where f(x) decreasing, f'(x) negative<br>• Where f(x) has inflection, f'(x) has stationary point<br><br>Example: f(x) = x² (U-shaped)<br>f'(x) = 2x (straight line through origin)"
+    },
+    {
+      "front": "Finding Points of Inflection",
+      "back": "Points where curve changes concavity:<br>1. Find \\(\\frac{d^2y}{dx^2}\\)<br>2. Solve \\(\\frac{d^2y}{dx^2} = 0\\)<br>3. Check sign change in second derivative<br><br>Example: y = x³<br>\\(\\frac{d^2y}{dx^2} = 6x = 0\\) at x=0<br>Left of 0: negative, Right of 0: positive<br>Point of inflection at (0,0)"
+    },
+    {
+      "front": "Optimization: Maximum Area Problems",
+      "back": "Example: Find rectangle with maximum area for fixed perimeter P<br>Let length = x, width = P/2 - x<br>A = x(P/2 - x) = Px/2 - x²<br>\\(\\frac{dA}{dx} = P/2 - 2x = 0\\)<br>x = P/4 ⇒ Square gives maximum area"
+    },
+    {
+      "front": "Optimization: Minimum Cost Problems",
+      "back": "Example: Box with square base, volume 32 m³<br>Material costs: base $2/m², sides $1/m²<br>Find dimensions for minimum cost<br>Let base = x, height = 32/x²<br>Cost C = 2x² + 4x(32/x²) = 2x² + 128/x<br>\\(\\frac{dC}{dx} = 4x - 128/x^2 = 0\\)<br>4x³ = 128 ⇒ x³ = 32 ⇒ x = 3.17 m"
+    },
+    {
+      "front": "Differentiation of Exponential Functions",
+      "back": "\\(\\frac{d}{dx}(e^x) = e^x\\)<br>\\(\\frac{d}{dx}(e^{kx}) = ke^{kx}\\)<br><br>Example:<br>\\(\\frac{d}{dx}(e^{2x}) = 2e^{2x}\\)<br>\\(\\frac{d}{dx}(e^{-3x}) = -3e^{-3x}\\)"
+    }
+  ]
+},
+{
+  "topic": "8. Integration",
+  "cards": [
+    {
+      "front": "Basic Integration Formula: Power Rule",
+      "back": "\\(\\int x^n  dx = \\frac{x^{n+1}}{n+1} + C\\), for n ≠ -1<br><br>Examples:<br>\\(\\int x^3  dx = \\frac{x^4}{4} + C\\)<br>\\(\\int \\sqrt{x}  dx = \\int x^{1/2}  dx = \\frac{2}{3}x^{3/2} + C\\)<br>\\(\\int \\frac{1}{x^2}  dx = \\int x^{-2}  dx = -x^{-1} + C\\)"
+    },
+    {
+      "front": "Integration of (ax + b)ⁿ",
+      "back": "\\(\\int (ax + b)^n  dx = \\frac{(ax + b)^{n+1}}{a(n+1)} + C\\), for n ≠ -1<br><br>Examples:<br>\\(\\int (2x + 3)^4  dx = \\frac{(2x + 3)^5}{2 \\times 5} + C = \\frac{(2x+3)^5}{10} + C\\)<br>\\(\\int \\sqrt{3x-1}  dx = \\int (3x-1)^{1/2}  dx = \\frac{(3x-1)^{3/2}}{3 \\times 3/2} + C = \\frac{2}{9}(3x-1)^{3/2} + C\\)"
+    },
+    {
+      "front": "Fundamental Theorem of Calculus",
+      "back": "If F'(x) = f(x), then \\(\\int_a^b f(x)  dx = F(b) - F(a)\\)<br><br>Example: \\(\\int_1^2 3x^2  dx = [x^3]_1^2 = 8 - 1 = 7\\)<br>The constant C cancels out in definite integrals"
+    },
+    {
+      "front": "Area Under a Curve (x-axis boundaries)",
+      "back": "Area between curve y = f(x) and x-axis from x=a to x=b:<br>\\(A = \\int_a^b f(x)  dx\\)<br><br>Example: Area under y = x² from x=1 to x=3<br>\\(A = \\int_1^3 x^2  dx = [\\frac{x^3}{3}]_1^3 = 9 - \\frac{1}{3} = \\frac{26}{3}\\)"
+    },
+    {
+      "front": "Area Between Curve and x-axis (Below axis)",
+      "back": "When curve goes below x-axis, integration gives negative area.<br>Take absolute value or reverse limits:<br>\\(A = \\int_a^b |f(x)|  dx\\)<br><br>Example: y = x from x=-2 to x=1<br>\\(\\int_{-2}^1 x  dx = [\\frac{x^2}{2}]_{-2}^1 = 0.5 - 2 = -1.5\\)<br>But actual area = 1.5 + 2 = 3.5 (split at x=0)"
+    },
+    {
+      "front": "Area Between Two Curves",
+      "back": "Area between y = f(x) (upper) and y = g(x) (lower):<br>\\(A = \\int_a^b [f(x) - g(x)]  dx\\)<br><br>Example: Area between y = x² and y = x from x=0 to x=1<br>\\(A = \\int_0^1 (x - x^2)  dx = [\\frac{x^2}{2} - \\frac{x^3}{3}]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}\\)"
+    },
+    {
+      "front": "Volume of Revolution Around x-axis (360°)",
+      "back": "Volume when rotating y = f(x) around x-axis from x=a to x=b:<br>\\(V = \\pi \\int_a^b y^2  dx\\)<br><br>Example: Volume of y = x from x=0 to x=2 rotated around x-axis<br>\\(V = \\pi \\int_0^2 x^2  dx = \\pi [\\frac{x^3}{3}]_0^2 = \\frac{8\\pi}{3}\\)"
+    },
+    {
+      "front": "Volume of Revolution Around y-axis",
+      "back": "If x = g(y), volume when rotating around y-axis from y=c to y=d:<br>\\(V = \\pi \\int_c^d x^2  dy\\)<br><br>Example: Volume of y = x² from y=0 to y=4 rotated around y-axis<br>x = √y<br>\\(V = \\pi \\int_0^4 (\\sqrt{y})^2  dy = \\pi \\int_0^4 y  dy = \\pi [\\frac{y^2}{2}]_0^4 = 8\\pi\\)"
+    },
+    {
+      "front": "Volume of Revolution: Partial Rotation (θ°)",
+      "back": "For rotation angle θ (in degrees) instead of 360°:<br>\\(V = \\frac{\\theta}{360} \\times \\pi \\int_a^b y^2  dx\\)<br><br>Example: y = x from x=0 to x=2 rotated 180° around x-axis<br>\\(V = \\frac{180}{360} \\times \\pi \\int_0^2 x^2  dx = \\frac{1}{2} \\times \\frac{8\\pi}{3} = \\frac{4\\pi}{3}\\)"
+    },
+    {
+      "front": "Finding Equation of Curve from dy/dx",
+      "back": "Integrate dy/dx and use given point to find constant C<br><br>Example: dy/dx = 2x, curve passes through (1,4)<br>\\(y = \\int 2x  dx = x^2 + C\\)<br>Substitute (1,4): 4 = 1 + C ⇒ C = 3<br>Equation: y = x² + 3"
+    },
+    {
+      "front": "Finding Original Function from Second Derivative",
+      "back": "Integrate twice and use two conditions<br><br>Example: d²y/dx² = 6x, when x=1: y=2 and dy/dx=3<br>First integration: dy/dx = 3x² + C₁<br>3 = 3(1) + C₁ ⇒ C₁ = 0<br>Second integration: y = x³ + C₂<br>2 = 1 + C₂ ⇒ C₂ = 1<br>Equation: y = x³ + 1"
+    },
+    {
+      "front": "Area Between Curve and y-axis",
+      "back": "If x = g(y), area between curve and y-axis from y=c to y=d:<br>\\(A = \\int_c^d x  dy\\)<br><br>Example: Area between x = y² and y-axis from y=0 to y=2<br>\\(A = \\int_0^2 y^2  dy = [\\frac{y^3}{3}]_0^2 = \\frac{8}{3}\\)"
+    },
+    {
+      "front": "Volume Using Cylindrical Shells Method",
+      "back": "Volume when rotating around y-axis (alternative method):<br>\\(V = 2\\pi \\int_a^b x f(x)  dx\\)<br><br>Example: Volume of y = x² from x=0 to x=2 rotated around y-axis<br>\\(V = 2\\pi \\int_0^2 x(x^2)  dx = 2\\pi \\int_0^2 x^3  dx = 2\\pi [\\frac{x^4}{4}]_0^2 = 8\\pi\\)"
+    },
+    {
+      "front": "Integration of Exponential Functions",
+      "back": "\\(\\int e^x  dx = e^x + C\\)<br>\\(\\int e^{kx}  dx = \\frac{1}{k}e^{kx} + C\\)<br><br>Examples:<br>\\(\\int e^{2x}  dx = \\frac{1}{2}e^{2x} + C\\)<br>\\(\\int 3e^{-x}  dx = -3e^{-x} + C\\)"
+    },
+    {
+      "front": "Definite Integral with Substitution",
+      "back": "Change limits when using substitution in definite integrals<br><br>Example: \\(\\int_0^1 2x(1+x^2)^3  dx\\)<br>Let u = 1 + x², du = 2x dx<br>When x=0: u=1; when x=1: u=2<br>\\(\\int_1^2 u^3  du = [\\frac{u^4}{4}]_1^2 = 4 - 0.25 = 3.75\\)"
+    },
+    {
+      "front": "Finding Area Enclosed by Curve and Lines",
+      "back": "Find intersection points first, then integrate difference<br><br>Example: Area enclosed by y = x² and y = 2x<br>Solve x² = 2x ⇒ x(x-2)=0 ⇒ x=0,2<br>\\(A = \\int_0^2 (2x - x^2)  dx = [x^2 - \\frac{x^3}{3}]_0^2 = 4 - \\frac{8}{3} = \\frac{4}{3}\\)"
+    }
+  ]
+}
         ];
 
         // --- DOM Elements ---
