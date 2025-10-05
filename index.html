@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS Level Maths Flashcards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+    <style>
+        /* Custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            overscroll-behavior: none; /* Prevents pull-to-refresh on mobile */
+        }
+        /* Styling for the flashcard flip animation */
+        .flashcard-container {
+            perspective: 1000px;
+        }
+        .flashcard {
+            width: 100%;
+            height: 350px; /* Increased height for more content */
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+        .flashcard.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column; /* Allow content to stack vertically */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allow scrolling for long content */
+        }
+        .flashcard-front {
+            background-color: #ffffff; /* White front */
+            color: #1f2937; /* Dark gray text */
+        }
+        .flashcard-back {
+            background-color: #f3f4f6; /* Light gray back */
+            color: #1f2937; /* Dark gray text */
+            transform: rotateY(180deg);
+        }
+        .flashcard-content h3 {
+            font-size: 1.25rem; /* Tailwind text-xl */
+            font-weight: 600; /* Tailwind semibold */
+            margin-bottom: 0.5rem; /* Tailwind mb-2 */
+        }
+        .flashcard-content p, .flashcard-content div {
+            font-size: 1rem; /* Tailwind text-base */
+            line-height: 1.5; /* Increased line height for readability */
+            text-align: center; /* Center align text */
+            width: 100%; /* Ensure text takes full width */
+        }
+        .flashcard-content ul {
+            list-style-type: disc;
+            padding-left: 1.25rem; /* Tailwind pl-5 */
+        }
+        .flashcard-content li {
+            margin-bottom: 0.25rem; /* Tailwind mb-1 */
+        }
+        /* Custom scrollbar for flashcard content */
+        .flashcard-face::-webkit-scrollbar {
+            width: 8px;
+        }
+        .flashcard-face::-webkit-scrollbar-track {
+            background: #e5e7eb; /* Tailwind gray-200 */
+            border-radius: 10px;
+        }
+        .flashcard-face::-webkit-scrollbar-thumb {
+            background: #9ca3af; /* Tailwind gray-400 */
+            border-radius: 10px;
+        }
+        .flashcard-face::-webkit-scrollbar-thumb:hover {
+            background: #6b7280; /* Tailwind gray-500 */
+        }
+
+        /* Styling for buttons */
+        .btn {
+            padding: 0.75rem 1.5rem; /* Tailwind py-3 px-6 */
+            border-radius: 0.5rem; /* Tailwind rounded-lg */
+            font-weight: 600; /* Tailwind semibold */
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .btn:active {
+            transform: translateY(1px);
+        }
+        .btn-primary {
+            background-color: #3b82f6; /* Tailwind blue-500 */
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb; /* Tailwind blue-600 */
+        }
+        .btn-secondary {
+            background-color: #6b7280; /* Tailwind gray-500 */
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #4b5563; /* Tailwind gray-600 */
+        }
+        .btn-success {
+            background-color: #10b981; /* Tailwind green-500 */
+            color: white;
+        }
+        .btn-success:hover {
+            background-color: #059669; /* Tailwind green-600 */
+        }
+        .btn-danger {
+            background-color: #ef4444; /* Tailwind red-500 */
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #dc2626; /* Tailwind red-600 */
+        }
+        .btn-icon {
+            padding: 0.5rem; /* Tailwind p-2 */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6); /* Dimmed background */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 2rem; /* Tailwind p-8 */
+            border-radius: 0.75rem; /* Tailwind rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* Tailwind shadow-xl */
+            width: 90%;
+            max-width: 500px; /* Max width for the modal */
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem; /* Tailwind mb-6 */
+            padding-bottom: 1rem; /* Tailwind pb-4 */
+            border-bottom: 1px solid #e5e7eb; /* Tailwind border-gray-200 */
+        }
+        .modal-title {
+            font-size: 1.5rem; /* Tailwind text-2xl */
+            font-weight: 700; /* Tailwind bold */
+            color: #111827; /* Tailwind gray-900 */
+        }
+        .close-button {
+            color: #9ca3af; /* Tailwind gray-400 */
+            font-size: 1.75rem; /* Tailwind text-3xl */
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #1f2937; /* Tailwind gray-800 */
+            text-decoration: none;
+        }
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem; /* Tailwind gap-4 */
+        }
+        .topic-button {
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            color: #374151; /* Tailwind gray-700 */
+            padding: 0.75rem; /* Tailwind p-3 */
+            border-radius: 0.5rem; /* Tailwind rounded-lg */
+            text-align: center;
+            font-weight: 500; /* Tailwind medium */
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        }
+        .topic-button:hover {
+            background-color: #d1d5db; /* Tailwind gray-300 */
+            color: #1f2937; /* Tailwind gray-800 */
+        }
+        .topic-button.active {
+            background-color: #3b82f6; /* Tailwind blue-500 */
+            color: white;
+        }
+
+        /* Progress bar */
+        .progress-bar-container {
+            width: 100%;
+            background-color: #e5e7eb; /* Tailwind gray-200 */
+            border-radius: 0.5rem; /* Tailwind rounded-lg */
+            overflow: hidden;
+            margin-top: 0.5rem; /* Tailwind mt-2 */
+        }
+        .progress-bar {
+            height: 10px; /* Tailwind h-2.5 */
+            background-color: #10b981; /* Tailwind green-500 */
+            border-radius: 0.5rem; /* Tailwind rounded-lg */
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* Message box for alerts */
+        .message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1f2937; /* Tailwind gray-800 */
+            color: white;
+            padding: 1rem 1.5rem; /* Tailwind p-4 px-6 */
+            border-radius: 0.5rem; /* Tailwind rounded-lg */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateX(-50%) translateY(20px);
+        }
+        .message-box.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col items-center min-h-screen p-4 md:p-8">
+
+    <header class="w-full max-w-3xl mb-6 md:mb-10 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-blue-600">AS Level Maths Flashcards</h1>
+        <p class="text-slate-600 mt-1 md:mt-2">Master the 9709 Pure 1 Syllabus</p>
+    </header>
+
+    <div class="w-full max-w-3xl mb-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <button id="selectTopicBtn" class="btn btn-primary w-full sm:w-auto">
+            <i class="fas fa-layer-group mr-2"></i>Select Topic
+        </button>
+        <div class="flex gap-2">
+            <button id="shuffleBtn" class="btn btn-secondary btn-icon" title="Shuffle Cards">
+                <i class="fas fa-random"></i>
+            </button>
+            <button id="resetProgressBtn" class="btn btn-danger btn-icon" title="Reset Progress for this Topic">
+                <i class="fas fa-undo"></i>
+            </button>
+        </div>
+    </div>
+
+    <main class="w-full max-w-xl">
+        <div id="flashcardStats" class="text-sm text-slate-600 mb-2 text-center">
+            Select a topic to begin.
+        </div>
+        <div id="masteredProgressContainer" class="progress-bar-container mb-4 hidden">
+            <div id="masteredProgressBar" class="progress-bar"></div>
+        </div>
+
+        <div id="flashcardContainer" class="flashcard-container">
+            <div id="flashcard" class="flashcard">
+                <div class="flashcard-face flashcard-front">
+                    <div class="flashcard-content">
+                        <h3 id="cardFrontTitle">Welcome!</h3>
+                        <p id="cardFrontContent">Select a topic to start learning.</p>
+                    </div>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                    <div class="flashcard-content">
+                        <h3 id="cardBackTitle">Answer</h3>
+                        <div id="cardBackContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="navigationButtons" class="mt-6 flex justify-between items-center hidden">
+            <button id="prevCardBtn" class="btn btn-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Previous
+            </button>
+            <button id="markMasteredBtn" class="btn btn-success">
+                <i class="fas fa-check-circle mr-2"></i>Mastered
+            </button>
+            <button id="nextCardBtn" class="btn btn-primary">
+                Next<i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </main>
+
+    <div id="topicModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Select a Topic</h2>
+                <span class="close-button" id="closeModalBtn">&times;</span>
+            </div>
+            <div id="topicGrid" class="topic-grid">
+                <!-- Topic buttons will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div id="messageBox" class="message-box"></div>
+
+    <script>
+        // --- Flashcard Data ---
+        const flashcardData = [
+            {
+                "topic": "1. Quadratics",
+                "cards": [
+                    {
+                        "front": "What is the quadratic formula?",
+                        "back": "For a quadratic equation in the form $ax^2 + bx + c = 0$, the solutions are given by:<br>$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$"
+                    },
+                    {
+                        "front": "What is the discriminant and what does it tell us about the roots?",
+                        "back": "The discriminant is $\\Delta = b^2 - 4ac$.<br>• $\\Delta > 0$: Two distinct real roots<br>• $\\Delta = 0$: One repeated real root<br>• $\\Delta < 0$: No real roots"
+                    },
+                    {
+                        "front": "How do you complete the square for $x^2 + bx + c$?",
+                        "back": "$x^2 + bx + c = (x + \\frac{b}{2})^2 - (\\frac{b}{2})^2 + c$"
+                    },
+                    {
+                        "front": "How do you solve quadratic inequalities?",
+                        "back": "1. Find the roots<br>2. Sketch the quadratic<br>3. Identify the regions where the inequality holds"
+                    },
+                    {
+                        "front": "How do you solve simultaneous equations where one is linear and one is quadratic?",
+                        "back": "1. Rearrange the linear equation to make y the subject<br>2. Substitute into the quadratic equation<br>3. Solve the resulting quadratic<br>4. Find the corresponding y-values"
+                    }
+                ]
+            },
+            {
+                "topic": "2. Functions",
+                "cards": [
+                    {
+                        "front": "What is a function?",
+                        "back": "A relation where each input (from the domain) has exactly one output (in the range)."
+                    },
+                    {
+                        "front": "What is the difference between domain and range?",
+                        "back": "Domain: Set of all possible input values<br>Range: Set of all possible output values"
+                    },
+                    {
+                        "front": "What is a composite function?",
+                        "back": "A function made by applying one function to the result of another: $fg(x) = f(g(x))$"
+                    },
+                    {
+                        "front": "What is an inverse function?",
+                        "back": "A function that reverses the effect of the original function. If $f(a) = b$, then $f^{-1}(b) = a$"
+                    },
+                    {
+                        "front": "What is a one-to-one function?",
+                        "back": "A function where each element of the range corresponds to exactly one element of the domain. Only one-to-one functions have inverses."
+                    }
+                ]
+            },
+            {
+                "topic": "3. Coordinate Geometry",
+                "cards": [
+                    {
+                        "front": "What is the equation of a straight line?",
+                        "back": "$y = mx + c$, where m is the gradient and c is the y-intercept"
+                    },
+                    {
+                        "front": "How do you find the gradient between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
+                        "back": "$m = \\frac{y_2 - y_1}{x_2 - x_1}$"
+                    },
+                    {
+                        "front": "What is the equation of a circle with center (a,b) and radius r?",
+                        "back": "$(x - a)^2 + (y - b)^2 = r^2$"
+                    },
+                    {
+                        "front": "How do you find the distance between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
+                        "back": "$d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$"
+                    },
+                    {
+                        "front": "How do you find the midpoint between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
+                        "back": "$\\left(\\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2}\\right)$"
+                    }
+                ]
+            },
+            {
+                "topic": "4. Circular Measure (Radians)",
+                "cards": [
+                    {
+                        "front": "What is a radian?",
+                        "back": "A radian is the angle subtended at the center of a circle by an arc equal in length to the radius."
+                    },
+                    {
+                        "front": "How do you convert between radians and degrees?",
+                        "back": "$\\pi$ radians = 180°<br>To convert: multiply degrees by $\\frac{\\pi}{180}$ or radians by $\\frac{180}{\\pi}$"
+                    },
+                    {
+                        "front": "What is the formula for arc length?",
+                        "back": "$s = r\\theta$, where r is the radius and θ is the angle in radians"
+                    },
+                    {
+                        "front": "What is the formula for the area of a sector?",
+                        "back": "$A = \\frac{1}{2}r^2\\theta$, where r is the radius and θ is the angle in radians"
+                    },
+                    {
+                        "front": "What are the exact trigonometric values for common angles in radians?",
+                        "back": "$\\sin(\\frac{\\pi}{6}) = \\frac{1}{2}$, $\\cos(\\frac{\\pi}{6}) = \\frac{\\sqrt{3}}{2}$, $\\tan(\\frac{\\pi}{6}) = \\frac{1}{\\sqrt{3}}$<br>$\\sin(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}$, $\\cos(\\frac{\\pi}{4}) = \\frac{\\sqrt{2}}{2}$, $\\tan(\\frac{\\pi}{4}) = 1$<br>$\\sin(\\frac{\\pi}{3}) = \\frac{\\sqrt{3}}{2}$, $\\cos(\\frac{\\pi}{3}) = \\frac{1}{2}$, $\\tan(\\frac{\\pi}{3}) = \\sqrt{3}$"
+                    }
+                ]
+            },
+            {
+                "topic": "5. Trigonometry",
+                "cards": [
+                    {
+                        "front": "What is SOHCAHTOA?",
+                        "back": "SOH: $\\sin\\theta = \\frac{opposite}{hypotenuse}$<br>CAH: $\\cos\\theta = \\frac{adjacent}{hypotenuse}$<br>TOA: $\\tan\\theta = \\frac{opposite}{adjacent}$"
+                    },
+                    {
+                        "front": "What are the Pythagorean identities?",
+                        "back": "$\\sin^2\\theta + \\cos^2\\theta = 1$<br>$1 + \\tan^2\\theta = \\sec^2\\theta$<br>$1 + \\cot^2\\theta = \\csc^2\\theta$"
+                    },
+                    {
+                        "front": "What is the sine rule?",
+                        "back": "$\\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}$"
+                    },
+                    {
+                        "front": "What is the cosine rule?",
+                        "back": "$a^2 = b^2 + c^2 - 2bc\\cos A$<br>or $\\cos A = \\frac{b^2 + c^2 - a^2}{2bc}$"
+                    },
+                    {
+                        "front": "What is the area of a triangle formula using trigonometry?",
+                        "back": "$Area = \\frac{1}{2}ab\\sin C$"
+                    }
+                ]
+            },
+            {
+                "topic": "6. Series",
+                "cards": [
+                    {
+                        "front": "What is the binomial expansion formula?",
+                        "back": "$(a + b)^n = \\sum_{r=0}^{n} \\binom{n}{r} a^{n-r} b^r$<br>where $\\binom{n}{r} = \\frac{n!}{r!(n-r)!}$"
+                    },
+                    {
+                        "front": "What is an arithmetic progression?",
+                        "back": "A sequence where the difference between consecutive terms is constant.<br>nth term: $u_n = a + (n-1)d$<br>Sum of first n terms: $S_n = \\frac{n}{2}(2a + (n-1)d)$"
+                    },
+                    {
+                        "front": "What is a geometric progression?",
+                        "back": "A sequence where each term is found by multiplying the previous term by a constant.<br>nth term: $u_n = ar^{n-1}$<br>Sum of first n terms: $S_n = \\frac{a(1-r^n)}{1-r}$ (for r ≠ 1)"
+                    },
+                    {
+                        "front": "What is the sum to infinity of a geometric series?",
+                        "back": "$S_\\infty = \\frac{a}{1-r}$, but only if |r| < 1"
+                    },
+                    {
+                        "front": "What is sigma notation?",
+                        "back": "$\\sum_{r=1}^{n} f(r)$ means the sum of f(r) from r=1 to r=n"
+                    }
+                ]
+            },
+            {
+                "topic": "7. Differentiation",
+                "cards": [
+                    {
+                        "front": "What is the derivative of $x^n$?",
+                        "back": "$\\frac{d}{dx}(x^n) = nx^{n-1}$"
+                    },
+                    {
+                        "front": "What is the chain rule?",
+                        "back": "If y = f(u) and u = g(x), then $\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$"
+                    },
+                    {
+                        "front": "What is the product rule?",
+                        "back": "If y = uv, then $\\frac{dy}{dx} = u\\frac{dv}{dx} + v\\frac{du}{dx}$"
+                    },
+                    {
+                        "front": "What is the quotient rule?",
+                        "back": "If y = $\\frac{u}{v}$, then $\\frac{dy}{dx} = \\frac{v\\frac{du}{dx} - u\\frac{dv}{dx}}{v^2}$"
+                    },
+                    {
+                        "front": "How do you find stationary points?",
+                        "back": "1. Find $\\frac{dy}{dx}$<br>2. Set $\\frac{dy}{dx} = 0$ and solve for x<br>3. Use the second derivative test to determine nature:<br>• $\\frac{d^2y}{dx^2} > 0$: Minimum<br>• $\\frac{d^2y}{dx^2} < 0$: Maximum<br>• $\\frac{d^2y}{dx^2} = 0$: Point of inflection"
+                    }
+                ]
+            },
+            {
+                "topic": "8. Integration",
+                "cards": [
+                    {
+                        "front": "What is the integral of $x^n$?",
+                        "back": "$\\int x^n dx = \\frac{x^{n+1}}{n+1} + C$, for n ≠ -1"
+                    },
+                    {
+                        "front": "What is the fundamental theorem of calculus?",
+                        "back": "If F'(x) = f(x), then $\\int_a^b f(x) dx = F(b) - F(a)$"
+                    },
+                    {
+                        "front": "How do you find the area under a curve?",
+                        "back": "Area = $\\int_a^b f(x) dx$"
+                    },
+                    {
+                        "front": "How do you find the area between two curves?",
+                        "back": "Area = $\\int_a^b [f(x) - g(x)] dx$, where f(x) is the upper curve"
+                    },
+                    {
+                        "front": "What is integration by substitution?",
+                        "back": "A method to simplify integrals by substituting a new variable: $\\int f(g(x))g'(x) dx = \\int f(u) du$ where u = g(x)"
+                    }
+                ]
+            },
+            {
+                "topic": "9. Inequalities & Simultaneous Equations",
+                "cards": [
+                    {
+                        "front": "How do you solve linear inequalities?",
+                        "back": "Solve like equations, but reverse the inequality sign when multiplying or dividing by a negative number."
+                    },
+                    {
+                        "front": "How do you solve quadratic inequalities?",
+                        "back": "1. Find the roots<br>2. Sketch the graph<br>3. Identify the regions where the inequality holds"
+                    },
+                    {
+                        "front": "How do you solve simultaneous linear equations?",
+                        "back": "Use elimination or substitution method"
+                    },
+                    {
+                        "front": "How do you solve simultaneous equations where one is linear and one is quadratic?",
+                        "back": "Substitute the linear equation into the quadratic equation"
+                    },
+                    {
+                        "front": "How do you represent inequalities on graphs?",
+                        "back": "Use solid lines for ≤ or ≥, dashed lines for < or >, and shade the region that satisfies the inequality"
+                    }
+                ]
+            }
+        ];
+
+        // --- DOM Elements ---
+        const flashcardElement = document.getElementById('flashcard');
+        const cardFrontTitleElement = document.getElementById('cardFrontTitle');
+        const cardFrontContentElement = document.getElementById('cardFrontContent');
+        const cardBackTitleElement = document.getElementById('cardBackTitle');
+        const cardBackContentElement = document.getElementById('cardBackContent');
+        const prevCardBtn = document.getElementById('prevCardBtn');
+        const nextCardBtn = document.getElementById('nextCardBtn');
+        const markMasteredBtn = document.getElementById('markMasteredBtn');
+        const navigationButtons = document.getElementById('navigationButtons');
+        const flashcardStatsElement = document.getElementById('flashcardStats');
+        const selectTopicBtn = document.getElementById('selectTopicBtn');
+        const topicModal = document.getElementById('topicModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const topicGridElement = document.getElementById('topicGrid');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const resetProgressBtn = document.getElementById('resetProgressBtn');
+        const masteredProgressBar = document.getElementById('masteredProgressBar');
+        const masteredProgressContainer = document.getElementById('masteredProgressContainer');
+        const messageBox = document.getElementById('messageBox');
+
+        // --- App State ---
+        let currentTopic = null;
+        let currentCards = [];
+        let currentIndex = 0;
+        let masteredCards = {}; // Stores mastered cards for each topic: { "topicName": [cardFrontIdentifier] }
+
+        // --- Functions ---
+
+        // Initialize: Load topics into modal
+        function init() {
+            topicGridElement.innerHTML = ''; // Clear existing buttons before adding new ones
+            flashcardData.forEach(topicObj => {
+                const button = document.createElement('button');
+                button.classList.add('topic-button');
+                button.textContent = topicObj.topic;
+                button.addEventListener('click', () => selectTopic(topicObj.topic));
+                topicGridElement.appendChild(button);
+            });
+            loadProgress(); // Load progress from localStorage
+        }
+
+        // Show a temporary message
+        function showMessage(text, duration = 3000) {
+            messageBox.textContent = text;
+            messageBox.classList.add('show');
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, duration);
+        }
+
+        // Select a topic
+        function selectTopic(topicName) {
+            currentTopic = topicName;
+            const topicObj = flashcardData.find(t => t.topic === topicName);
+            if (topicObj) {
+                currentCards = [...topicObj.cards]; // Create a mutable copy
+                currentIndex = 0;
+                if (!masteredCards[currentTopic]) {
+                    masteredCards[currentTopic] = [];
+                }
+                updateTopicButtons();
+                displayCard();
+                navigationButtons.classList.remove('hidden');
+                masteredProgressContainer.classList.remove('hidden');
+                topicModal.style.display = "none";
+                showMessage(`Topic selected: ${topicName}`);
+            }
+        }
+
+        // Update active state of topic buttons in modal
+        function updateTopicButtons() {
+            const buttons = topicGridElement.querySelectorAll('.topic-button');
+            buttons.forEach(btn => {
+                if (btn.textContent === currentTopic) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Display current card
+        function displayCard() {
+            if (!currentCards.length || !currentTopic) { // Added check for currentTopic
+                cardFrontTitleElement.textContent = "Welcome!";
+                cardFrontContentElement.innerHTML = "<p>Select a topic to start learning.</p>";
+                cardBackTitleElement.textContent = "Answer";
+                cardBackContentElement.innerHTML = "";
+                flashcardStatsElement.textContent = "Select a topic to begin.";
+                navigationButtons.classList.add('hidden');
+                masteredProgressContainer.classList.add('hidden');
+                 if (window.MathJax && typeof MathJax.typesetPromise === 'function') { // Typeset the welcome message if needed
+                    MathJax.typesetPromise([cardFrontContentElement]).catch(function (err) {
+                        console.error('MathJax typesetting error: ' + err.message);
+                    });
+                }
+                return;
+            }
+
+            const card = currentCards[currentIndex];
+            cardFrontTitleElement.textContent = "Question:";
+            cardFrontContentElement.innerHTML = card.front;
+            cardBackTitleElement.textContent = "Answer:";
+            cardBackContentElement.innerHTML = card.back;
+
+            if (window.MathJax && typeof MathJax.typesetPromise === 'function') {
+                MathJax.typesetPromise([cardFrontContentElement, cardBackContentElement]).catch(function (err) {
+                    console.error('MathJax typesetting error: ' + err.message);
+                });
+            }
+
+            flashcardElement.classList.remove('is-flipped');
+            updateStats();
+            updateMarkMasteredButton();
+            saveProgress();
+        }
+
+        // Update card statistics display
+        function updateStats() {
+            if (!currentTopic || !currentCards.length) {
+                 flashcardStatsElement.textContent = "Select a topic to begin.";
+                 masteredProgressContainer.classList.add('hidden');
+                return;
+            }
+            const total = currentCards.length;
+            const masteredCount = masteredCards[currentTopic] ? masteredCards[currentTopic].length : 0;
+            flashcardStatsElement.textContent = `Topic: ${currentTopic} | Card ${currentIndex + 1} of ${total} | Mastered: ${masteredCount}/${total}`;
+            
+            const progressPercent = total > 0 ? (masteredCount / total) * 100 : 0;
+            masteredProgressBar.style.width = `${progressPercent}%`;
+            masteredProgressContainer.classList.remove('hidden');
+
+            if (masteredCount === total && total > 0) {
+                showMessage(`Congratulations! You've mastered all cards in ${currentTopic}!`, 5000);
+            }
+        }
+
+        // Flip the card
+        function flipCard() {
+            if (currentTopic && currentCards.length > 0) {
+                 flashcardElement.classList.toggle('is-flipped');
+            } else {
+                showMessage("Please select a topic first.");
+            }
+        }
+
+        // Go to next card
+        function nextCard() {
+            if (currentCards.length > 0) {
+                currentIndex = (currentIndex + 1) % currentCards.length;
+                displayCard();
+            }
+        }
+
+        // Go to previous card
+        function prevCard() {
+            if (currentCards.length > 0) {
+                currentIndex = (currentIndex - 1 + currentCards.length) % currentCards.length;
+                displayCard();
+            }
+        }
+
+        // Mark/unmark card as mastered
+        function toggleMastered() {
+            if (!currentTopic || !currentCards.length) return;
+
+            const cardIdentifier = currentCards[currentIndex].front; 
+
+            if (!masteredCards[currentTopic]) {
+                masteredCards[currentTopic] = [];
+            }
+
+            const masteredIndexInStorage = masteredCards[currentTopic].indexOf(cardIdentifier);
+
+            if (masteredIndexInStorage > -1) { 
+                masteredCards[currentTopic].splice(masteredIndexInStorage, 1);
+                showMessage("Card marked as 'Not Mastered'.");
+            } else { 
+                masteredCards[currentTopic].push(cardIdentifier);
+                showMessage("Card marked as 'Mastered'!");
+            }
+            updateMarkMasteredButton();
+            updateStats();
+            saveProgress();
+        }
+        
+        function updateMarkMasteredButton() {
+            if (!currentTopic || !currentCards.length) return;
+            const cardIdentifier = currentCards[currentIndex].front;
+            if (masteredCards[currentTopic] && masteredCards[currentTopic].includes(cardIdentifier)) {
+                markMasteredBtn.innerHTML = '<i class="fas fa-times-circle mr-2"></i>Unmark';
+                markMasteredBtn.classList.remove('btn-success');
+                markMasteredBtn.classList.add('btn-secondary');
+            } else {
+                markMasteredBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Mastered';
+                markMasteredBtn.classList.remove('btn-secondary');
+                markMasteredBtn.classList.add('btn-success');
+            }
+        }
+
+        function shuffleCards() {
+            if (!currentTopic || !currentCards.length) {
+                showMessage("Please select a topic to shuffle cards.");
+                return;
+            }
+            // Fisher-Yates shuffle algorithm
+            for (let i = currentCards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
+            }
+            currentIndex = 0; // Reset to the first card after shuffling
+            displayCard();
+            showMessage(`Cards in ${currentTopic} have been shuffled.`);
+        }
+
+        function resetTopicProgress() {
+            if (!currentTopic) {
+                showMessage("Please select a topic to reset progress.");
+                return;
+            }
+            // Added a confirm dialog for better UX
+            if (confirm(`Are you sure you want to reset progress for ${currentTopic}? All 'mastered' marks for this topic will be cleared.`)) {
+                if (masteredCards[currentTopic]) {
+                    masteredCards[currentTopic] = [];
+                }
+                updateMarkMasteredButton(); // Update button state
+                updateStats(); // Update stats display
+                saveProgress(); // Save the reset state
+                showMessage(`Progress for ${currentTopic} has been reset.`);
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem('mathsFlashcardsProgress', JSON.stringify(masteredCards));
+            localStorage.setItem('mathsFlashcardsLastTopic', currentTopic || '');
+        }
+
+        function loadProgress() {
+            const savedProgress = localStorage.getItem('mathsFlashcardsProgress');
+            if (savedProgress) {
+                masteredCards = JSON.parse(savedProgress);
+            }
+            const lastTopic = localStorage.getItem('mathsFlashcardsLastTopic');
+            if (lastTopic && flashcardData.some(t => t.topic === lastTopic)) {
+                selectTopic(lastTopic);
+            } else {
+                displayCard(); // Display initial welcome message if no topic loaded
+            }
+        }
+
+        // --- Event Listeners ---
+        flashcardElement.addEventListener('click', flipCard);
+        prevCardBtn.addEventListener('click', prevCard);
+        nextCardBtn.addEventListener('click', nextCard);
+        markMasteredBtn.addEventListener('click', toggleMastered);
+        selectTopicBtn.addEventListener('click', () => {
+            topicModal.style.display = "flex";
+            updateTopicButtons(); 
+        });
+        closeModalBtn.addEventListener('click', () => topicModal.style.display = "none");
+        shuffleBtn.addEventListener('click', shuffleCards);
+        resetProgressBtn.addEventListener('click', resetTopicProgress);
+
+        window.addEventListener('click', (event) => {
+            if (event.target === topicModal) {
+                topicModal.style.display = "none";
+            }
+        });
+        
+        document.addEventListener('keydown', (event) => {
+            if (topicModal.style.display === "flex") return; 
+            if (event.key === 'ArrowLeft') {
+                prevCard();
+            } else if (event.key === 'ArrowRight') {
+                nextCard();
+            } else if (event.key === ' ') { 
+                event.preventDefault(); 
+                flipCard();
+            } else if (event.key.toLowerCase() === 'm') {
+                toggleMastered();
+            }
+        });
+
+        // --- Initialize App ---
+        init();
+
+    </script>
+</body>
+</html>
