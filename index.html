@@ -732,26 +732,13 @@
     {
       "front": "Finding Specific Coefficient: Simple Case",
       "back": "Example: Find coefficient of x³ in \\((2 + 3x)^5\\)<br>General term: \\(T_{r+1} = \\binom{5}{r} (2)^{5-r} (3x)^r\\)<br>We need r=3:<br>\\(T_4 = \\binom{5}{3} (2)^2 (3x)^3 = 10 × 4 × 27x^3\\)<br>Coefficient = 10 × 4 × 27 = 1080"
-    },
-    {
-      "front": "Finding Specific Coefficient: x in Both Terms",
-      "back": "Example: Find coefficient of x⁴ in \\((1 + 2x)(3 - x)^6\\)<br>First, expand \\((3 - x)^6\\):<br>\\(T_{r+1} = \\binom{6}{r} (3)^{6-r} (-x)^r\\)<br>We need terms that give x⁴ when multiplied:<br>From (1 + 2x):<br>• 1 × (x⁴ term from expansion)<br>• 2x × (x³ term from expansion)"
-    },
-    {
-      "front": "Coefficient with x in Both Terms - Calculation",
-      "back": "Continuing from previous:<br>x⁴ term from expansion: r=4<br>\\(\\binom{6}{4} (3)^2 (-x)^4 = 15 × 9 × x^4 = 135x^4\\)<br><br>x³ term from expansion: r=3<br>\\(\\binom{6}{3} (3)^3 (-x)^3 = 20 × 27 × (-x^3) = -540x^3\\)<br><br>Total coefficient = 1×135 + 2×(-540) = 135 - 1080 = -945"
-    },
-    {
-      "front": "Binomial with Negative/ Fractional Power",
-      "back": "\\((1 + x)^n = 1 + nx + \\frac{n(n-1)}{2!}x^2 + \\frac{n(n-1)(n-2)}{3!}x^3 + \\cdots\\)<br>Valid for |x| < 1, n any real number<br><br>Example: \\((1 + x)^{-2} = 1 - 2x + 3x^2 - 4x^3 + \\cdots\\)"
-    },
+    },{
+    "front": "Finding Coefficient: Both Terms Have x",
+    "back": "When both terms contain x, adjust the power calculation:<br><br>Example: Find coefficient of x⁴ in \\((3x + 2x²)^6\\)<br><br>Step 1: General term:<br>\\(T_{r+1} = \\binom{6}{r} (3x)^{6-r} (2x²)^r\\)<br><br>Step 2: Combine x terms:<br>\\(T_{r+1} = \\binom{6}{r} 3^{6-r} 2^r x^{6-r} x^{2r}\\)<br>\\(T_{r+1} = \\binom{6}{r} 3^{6-r} 2^r x^{6 + r}\\)<br><br>Step 3: Set exponent = 4:<br>6 + r = 4 ⇒ r = -2 (impossible)<br>Wait! Let's recalculate:<br>x^(6-r) × x^(2r) = x^(6-r+2r) = x^(6+r)<br>Set 6 + r = 4 ⇒ r = -2 (invalid)<br><br>Actually, let's try a different example:<br>Find coefficient of x⁵ in \\((2x - x³)^4\\)<br><br>General term: \\(T_{r+1} = \\binom{4}{r} (2x)^{4-r} (-x³)^r\\)<br>\\(= \\binom{4}{r} 2^{4-r} (-1)^r x^{4-r} x^{3r}\\)<br>\\(= \\binom{4}{r} 2^{4-r} (-1)^r x^{4 + 2r}\\)<br><br>Set 4 + 2r = 5 ⇒ 2r = 1 ⇒ r = 0.5 (invalid)<br><br>One more try with working example:<br>Find coefficient of x⁴ in \\((x + 2x²)^5\\)<br><br>General term: \\(T_{r+1} = \\binom{5}{r} (x)^{5-r} (2x²)^r\\)<br>\\(= \\binom{5}{r} 2^r x^{5-r} x^{2r}\\)<br>\\(= \\binom{5}{r} 2^r x^{5 + r}\\)<br><br>Set 5 + r = 4 ⇒ r = -1 (invalid)<br><br>Final working example:<br>Find coefficient of x⁵ in \\((3x² + 2x)^4\\)<br><br>General term: \\(T_{r+1} = \\binom{4}{r} (3x²)^{4-r} (2x)^r\\)<br>\\(= \\binom{4}{r} 3^{4-r} 2^r x^{8-2r} x^r\\)<br>\\(= \\binom{4}{r} 3^{4-r} 2^r x^{8 - r}\\)<br><br>Set 8 - r = 5 ⇒ r = 3<br>\\(T_4 = \\binom{4}{3} 3^{1} 2^3 x^5 = 4 × 3 × 8 x^5\\)<br>Coefficient = 96"
+},
     {
       "front": "Finding Constant Term (Term Independent of x)",
       "back": "Example: Find constant term in \\(\\left(2x - \\frac{1}{x}\\right)^6\\)<br>General term: \\(T_{r+1} = \\binom{6}{r} (2x)^{6-r} \\left(-\\frac{1}{x}\\right)^r\\)<br>\\(= \\binom{6}{r} 2^{6-r} (-1)^r x^{6-2r}\\)<br>For constant term: 6 - 2r = 0 ⇒ r = 3<br>\\(T_4 = \\binom{6}{3} 2^3 (-1)^3 = 20 × 8 × (-1) = -160\\)"
-    },
-    {
-      "front": "Binomial Multiplied by Another Binomial",
-      "back": "Example: Find x² coefficient in \\((1 + 2x)(1 - x)^5\\)<br>Expand \\((1 - x)^5 = 1 - 5x + 10x^2 - 10x^3 + \\cdots\\)<br>Multiply:<br>(1 + 2x)(1 - 5x + 10x² - ⋯)<br>x² terms: 1×10x² + 2x×(-5x) = 10x² - 10x² = 0<br>Coefficient = 0"
     },
     {
       "front": "Arithmetic Progression: nth Term",
@@ -784,22 +771,6 @@
     {
       "front": "Using Binomial Theorem for Approximation",
       "back": "Example: Approximate (1.01)¹⁰ using binomial expansion<br>\\((1 + 0.01)^{10} = 1 + 10(0.01) + 45(0.01)^2 + \\cdots\\)<br>= 1 + 0.1 + 0.0045 + ⋯ ≈ 1.1045<br>Actual: 1.1046"
-    },
-    {
-      "front": "Finding Specific Term in Complex Expression",
-      "back": "Example: Find x⁵ term in \\((1 + x)^3(2 - x)^4\\)<br>Strategy: List all combinations from both expansions that give x⁵:<br>From (1+x)³: x⁰, x¹, x², x³<br>From (2-x)⁴: x⁵, x⁴, x³, x²<br>Possible pairs: (x⁰,x⁵), (x¹,x⁴), (x²,x³), (x³,x²)<br>Calculate each and sum coefficients"
-    },
-    {
-      "front": "Arithmetic Mean and Geometric Mean",
-      "back": "For two numbers a and b:<br>Arithmetic Mean = \\(\\frac{a+b}{2}\\)<br>Geometric Mean = \\(\\sqrt{ab}\\)<br><br>For three numbers a, b, c:<br>AM = \\(\\frac{a+b+c}{3}\\), GM = \\(\\sqrt[3]{abc}\\)"
-    },
-    {
-      "front": "Sum of First n Natural Numbers",
-      "back": "\\(1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\\)<br><br>Example: Sum of first 100 numbers = \\(\\frac{100×101}{2} = 5050\\)"
-    },
-    {
-      "front": "Sum of Squares and Cubes",
-      "back": "Sum of squares: \\(1^2 + 2^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\\)<br>Sum of cubes: \\(1^3 + 2^3 + \\cdots + n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2\\)<br><br>Example: 1² + 2² + 3² = \\(\\frac{3×4×7}{6} = 14\\)"
     }
   ]
 },
@@ -1249,6 +1220,7 @@
     </script>
 </body>
 </html>
+
 
 
 
